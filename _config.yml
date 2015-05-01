@@ -1,6 +1,5 @@
 title:  Data Lesson Catalog
-description: 	A test development site that will host a catalog of data lessons 
-submitted by the community.
+description: 	A test development site that will host a catalog of data lessons submitted by the community.
 #Comment out url when working locally to resolve base urls correctly ok
 #use this when pushing to git for live version
 
@@ -18,13 +17,13 @@ disqus_shortname: DataLessons
 
 # Owner/author information
 owner: 		
-  name: Central Lesson Catalog
+  name: Data Lesson Catalog
   avatar: profilePic_circle.png
   bio: "Devoted to open data and open source in science and education."
   email: "lwasser@neoninc.org"
   twitter: "leahawasser"
   github: "lwasser"
-  youtube: "neonbetaedu"
+  youtube: 
 # instagram:      "mmistakes"
 # For Google Authorship https://plus.google.com/authorship
 # google_plus:    "MichaelRoseDesign"

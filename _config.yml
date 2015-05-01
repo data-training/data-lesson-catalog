@@ -1,5 +1,6 @@
-title: 		Work with Data - NEON Education
-description: 	A test development site that will host education materials that support the use of big data in science.
+title:  Data Lesson Catalog
+description: 	A test development site that will host a catalog of data lessons 
+submitted by the community.
 #Comment out url when working locally to resolve base urls correctly ok
 #use this when pushing to git for live version
 

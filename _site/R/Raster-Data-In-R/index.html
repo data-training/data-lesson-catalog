@@ -1,0 +1,1025 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Raster Data in R - The Basics &#8211; Work with Data - NEON Education</title>
+<meta name="description" content="This post explains the fundamental principles, functions and metadata that you need to work with raster data in R.">
+<meta name="keywords" content="hyperspectral-remote-sensing, R, GIS-Spatial-Data">
+<!-- Twitter Cards -->
+	
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:image" content=
+			
+				"http://localhost:4000/images/hierarchy_folder_purple.png"
+			
+		>
+	
+	<meta name="twitter:title" content="Raster Data in R - The Basics">
+	<meta name="twitter:description" content="This post explains the fundamental principles, functions and metadata that you need to work with raster data in R.">
+	<meta name="twitter:creator" content="@leahawasser">
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Raster Data in R - The Basics">
+<meta property="og:description" content="This post explains the fundamental principles, functions and metadata that you need to work with raster data in R.">
+<meta property="og:url" content="http://localhost:4000/R/Raster-Data-In-R/">
+<meta property="og:site_name" content="Work with Data - NEON Education">
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/R/Raster-Data-In-R/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Work with Data - NEON Education Feed">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|PT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.min.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+
+<link rel="stylesheet" href="/assets/highlightjs/styles/zenburn.css">
+<script src="/assets/highlightjs/highlight.packR.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://localhost:4000">Work with Data - NEON Education</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				<li><a href="http://localhost:4000/activities/" >All Data Tutorials</a></li>
+		        
+				<li><a href="http://localhost:4000/about/" >About</a></li>
+		        
+				<li><a href="http://localhost:4000/Data-Workshops/" >Data Workshops</a></li>
+		        
+				<li><a href="http://neoninc.org" target="_blank">NEON Website</a></li>
+		        
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+  <div class="image-wrap">
+  <img src=
+    
+      "http://localhost:4000/images/hierarchy_folder_purple.png"
+    
+  alt="Raster Data in R - The Basics feature image">
+  
+    <span class="image-credit">Photo Credit: <a href="http://www.neoninc.org">The Artistry of Colin Williams, NEON</a></span>
+  
+  </div><!-- /.image-wrap -->
+
+
+
+
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+
+    
+
+	 <img src="http://localhost:4000/images/profilePic_circle.png" class="bio-photo" alt="NEON EDUCATION bio photo"></a>
+
+
+
+<h3>NEON EDUCATION</h3>
+<p>Devoted to open data and open source in science and education.</p>
+
+
+<h3>Activities By Topic</h3>
+
+
+  
+    
+      <h5><a href="/lidar">LiDAR  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (4) 
+     </a></h5>
+
+
+  
+    
+  
+    
+      <h5><a href="/R">R programming  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (15) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/data-viz">Data Visualization  
+    
+  
+    
+   
+      (2) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+      <h5><a href="/GIS-Spatial-Data">Spatial Data & GIS  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (3) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/hyperspectral-remote-sensing">Hyperspectral Remote Sensing  
+    
+  
+    
+  
+    
+   
+      (5) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/HDF5">Hierarchical Data Formats (HDF5)  
+    
+  
+    
+  
+    
+  
+    
+   
+      (8) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/Data-Workshops">Data Workshops  
+    
+   
+      (3) 
+     </a></h5>
+ 
+
+
+<h4><a href="/activities/">View ALL Activities</a></h4>
+<h4><a href="/activities-by-tag/">Activities by Tag</a></h4>
+
+<br><br><br>
+
+
+<a href="http://twitter.com/leahawasser" class="author-social" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a>
+
+<a href="https://youtube.com/user/" class="author-social" target="_blank"><i class="fa fa-fw fa-youtube-square"></i> Youtube</a>
+
+
+
+
+<a href="http://github.com/lwasser" class="author-social" target="_blank"><i class="fa fa-github"></i> Github</a>
+
+
+
+
+
+
+
+<br><br><br>
+<h3>Blog.Roll</h3>
+<a href="http://www.r-bloggers.com" target="_blank">R Bloggers</a>
+
+
+  </div>
+  <article>
+    <div class="headline-wrap">
+      
+        <h1><a href="http://localhost:4000/R/Raster-Data-In-R/" rel="bookmark" title="Raster Data in R - The Basics">Raster Data in R - The Basics</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+
+    <div class="article-wrap">
+      <section id="table-of-contents" class="toc">
+  <header>
+    <h3>Contents</h3>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#about-raster-data">About Raster Data</a>    <ul>
+      <li><a href="#about-utm">About UTM</a></li>
+      <li><a href="#working-with-rasters-in-r">Working with Rasters in R</a></li>
+    </ul>
+  </li>
+  <li><a href="#cropping-rasters-in-r">Cropping Rasters in R</a>    <ul>
+      <li><a href="#part-2---working-with-multiple-rasters-within-raster-stacks-and-raster-bricks">Part 2 - Working with multiple rasters within Raster Stacks and Raster Bricks</a></li>
+      <li><a href="#raster-bricks-in-r">Raster Bricks in R</a></li>
+      <li><a href="#write-a-raster-to-a-geotiff-file-in-r">Write a raster to a Geotiff File in R</a></li>
+    </ul>
+  </li>
+</ul>
+
+  </div>
+</section>
+<!-- /#table-of-contents -->
+
+<div id="objectives">
+<h3>About</h3>
+This activity will walk you through the fundamental principles of working with raster data in R.
+<strong>R Skill Level:</strong> Intermediate
+
+<h3>Goals / Objectives</h3>
+This activity is under development
+After completing this activity, you will know:
+<ol>
+<li>what a raster dataset is and it's fundamental attributes.</li>
+<li>How to work with the raster package to import rasters into R</li>
+<li>How to perform basic calculations using rasters in R.</li>
+</ol>
+
+<h3>What you'll Need</h3>
+<ul>
+<li>R or R studio to write your code.</li>
+<li>GDAL libraries installed on you computer. <a href="https://www.youtube.com/watch?v=ZqfiZ_J_pQQ&amp;list=PLLWiknuNGd50NbvZhydbTqJJh5ZRkjuak" target="_blank">Click here for videos on installing GDAL on a MAC and a PC.</a></li>
+</ul>
+
+
+<h3>Data to Download</h3>
+
+Download the raster and *insitu* collected vegetation structure data:
+<b>Part 1 data</b>
+<a href="http://www.neonhighered.org/Data/LidarActivity/CHM_InSitu_Data.zip" class="btn btn-success"> DOWNLOAD NEON  Sample NEON LiDAR Data</a>
+<b>Part 2 data</b>
+<a href="http://www.neondataskills.org/data/rasterLayers_tif.zip" class="btn btn-success"> DOWNLOAD NEON imagery data (tiff format) California Domain D17</a>
+
+<p>The LiDAR and imagery data used to create the rasters in this dataset were collected over the San Joachim field site located in California (NEON Domain 17) and processed at <a href="http://www.neoninc.org" target="_blank">NEON </a> headquarters. The entire dataset can be access by request from the NEON website.</p>  
+
+<h3>Pre-reqs</h3>
+<ul>
+<li>
+<a href="http://neondataskills.org/HDF5/Working-With-Rasters/">Please consider reading the background page on rasters, by clicking here.</a>
+</li>
+<li>
+<a href="http://cran.r-project.org/web/packages/raster/raster.pdf" target="_blank">Read more about the Raster Package in R.</a>
+</li>
+</ul>
+</div>
+
+<h1 id="about-raster-data">About Raster Data</h1>
+<p>Raster or “gridded” data are data that are saved in pixels. In the spatial world, each pixel represents an area “land” on the ground. For example in the raster below, each pixel represents a particular land cover class that would be found in that location in the real world. <a href="http://neondataskills.org/HDF5/Working-With-Rasters/">More on rasters here</a>. </p>
+
+<figure>
+   <figcaption>Raster showing land cover??</figcaption>
+</figure>
+
+<p>To work with rasters in R, you will want two key packages, <code>GDAL</code> and <code>Raster</code>. Let’s start by loading these into r. To install the raster package you can use <code>install.packages(‘raster’)</code>.</p>
+
+<pre><code>#load the raster and sp packages
+library(raster)
+library(sp)
+#Set your working directory 
+setwd("~/yourWorkingDirectoryHere")  
+</code></pre>
+
+<p>Next, let’s load the raster into R. Notice that we’re using some clever code that tells R to paste the working directory into the path, and then it tells it to add the location of the raster layer.</p>
+
+<pre><code>#load raster in an R objected called 'DEM'
+DEM &lt;- raster(paste(getwd(), "/path here/SJER2013_DTM.tif", sep = ""))  # Tmin for January
+#next, let's look at the attributes of the raster. 
+DEM
+</code></pre>
+
+<p>OUTPUT:</p>
+
+<pre><code>class       : RasterLayer 
+dimensions  : 5060, 4299, 21752940  (nrow, ncol, ncell)
+resolution  : 1, 1  (x, y)
+extent      : 254570, 258869, 4107302, 4112362  (xmin, xmax, ymin, ymax)
+coord. ref. : +proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 
+data source : /Users/law/Documents/data/CHM_InSitu_Data/DigitalTerrainModel/SJER2013_DTMHill.tif 
+names       : SJER2013_DTMHill 
+values      : 0, 253  (min, max)
+</code></pre>
+
+<p>Notice a few things about this raster. </p>
+
+<ul>
+  <li><strong>Nrow, Ncol</strong> is the number of rows and columns data. </li>
+  <li><strong>Ncells</strong> is the total number of pixels that make up the raster.</li>
+  <li><strong>Resolution</strong> is the size of each pixel (in meters in this case)</li>
+  <li><strong>Extent</strong> this is the spatial extent of the raster. this value will be coordinate units associated with the coordinate reference system of the raster.</li>
+  <li><strong>Coord ref</strong> this is the coordinate reference system string for the raster. This raster is in UTM (Universal Trans mercator) zone 11 with a datum of WGS 84. <a href="http://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system" target="_blank">More in UTM here</a>.</li>
+</ul>
+
+<h2 id="about-utm">About UTM</h2>
+
+<figure>
+   <a href="http://upload.wikimedia.org/wikipedia/en/thumb/5/57/Utm-zones.svg/720px-Utm-zones.svg.png
+"><img src="http://upload.wikimedia.org/wikipedia/en/thumb/5/57/Utm-zones.svg/720px-Utm-zones.svg.png
+" /></a>
+ <figcaption>The UTM coordinate reference system breaks the world into 60 latitude zones.</figcaption>
+</figure>
+
+<h2 id="working-with-rasters-in-r">Working with Rasters in R</h2>
+<p>Now that we have the raster loaded into R, let’s grab some key metadata.</p>
+
+<pre><code>DEM@crs
+DEM@extent
+#plot the raster
+plot(DEM)
+</code></pre>
+
+<p>Also notice it has a resolution and a set of dimension values associated with the raster. This means less work for us!</p>
+
+<pre><code>DEM
+</code></pre>
+
+<p>OUTPUT:</p>
+
+<pre><code>class       : RasterLayer 
+dimensions  : 5060, 4299, 21752940  (nrow, ncol, ncell)
+resolution  : 1, 1  (x, y)
+extent      : 254570, 258869, 4107302, 4112362  (xmin, xmax, ymin, ymax)
+coord. ref. : +proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 
+data source : /Users/law/Documents/data/CHM_InSitu_Data/DigitalSurfaceModel/SJER2013_DSM.tif 
+names       : SJER2013_DSM 
+
+
+#let's create a plot of our raster
+plot(DEM)
+</code></pre>
+
+<h1 id="cropping-rasters-in-r">Cropping Rasters in R</h1>
+
+<p>You can crop rasters in R using different methods. You can crop the raster right in the plot area. To do this, first plot the raster. Then define the crop extent by clicking twice: 1) click in the upper left hand corner where you want the crop box to begin. Then click again in the lower RIGHT hand corner where the box ends. you’ll see a red box on the plot. NOTE that this method is a manual process. But it’s cool to know how to do.</p>
+
+<pre><code>#first, click in the upper left hand corner where you want the crop to begin
+# next click somewhere in the lower right hand corner to define the bottom right corner of your extent box you will see
+#note: this is a manual process!
+plot(DEM)
+cropBox &lt;- drawExtent()
+#crop the raster then plot the new cropped raster
+DEMcrop &lt;- crop(DEM, cropBox)
+plot(DEMcrop)
+</code></pre>
+
+<p>You can also manually assign the coordinate to use to crop. You’ll need the extent defined as (xmin,xmax,ymin,ymax) to do this. This is how you’d crop using a GIS shapefile (with a rectangular shape)</p>
+
+<pre><code>cropbox2 &lt;-c(255077.3,257158.6,4109614,4110934)
+DEMcrop2 &lt;- crop(DEM, cropbox2)
+plot(DEMcrop2)
+</code></pre>
+
+<h2 id="part-2---working-with-multiple-rasters-within-raster-stacks-and-raster-bricks">Part 2 - Working with multiple rasters within Raster Stacks and Raster Bricks</h2>
+<p>We’ve now loaded a raster into R. We’ve also made sure we knew the CRS (coordinate reference system) and extent of the dataset among other key metadata attributes. Next, let’s create a raster stack from 3 raster images.</p>
+
+<p>A raster stack is a collection of raster layers. Each raster layer in the stack needs to be in the same projection (CRS), spatial extent and resolution. You might use raster stacks for different reasons. For instance, you might want to group a time series of rasters representing precipitation or temperature into one R object. In part 2, we will stack 3 bands from a multi-band image together to create a final RGB image.</p>
+
+<p>The difficult way to do this is to load our rasters one at a time. But we’re over that!</p>
+
+<pre><code>#import tiffs
+band19 &lt;- "CHANGE-THIS-TO-PATH-ON-YOUR-COMPUTER/DigitalSurfaceModel/band19.tif"
+band34 &lt;- "CHANGE-THIS-TO-PATH-ON-YOUR-COMPUTER/DigitalSurfaceModel/band34.tif"
+band58 &lt;- "CHANGE-THIS-TO-PATH-ON-YOUR-COMPUTER/DigitalSurfaceModel/band58.tif"
+</code></pre>
+
+<p>We can also just use the list.files command to grab all of the files in a directory.</p>
+
+<pre><code>#create list of files to make raster stack
+#path to files
+tifPath &lt;- (paste(getwd(),"/rasterLayers_tif",sep = ""))
+rasterlist &lt;- list.files(tifPath)
+
+#create raster stack
+rgbRaster &lt;- stack(rasterlist)
+
+#check to see that you've created a raster stack and plot the layers
+rgbRaster
+plot(rgbRaster)
+</code></pre>
+
+<figure>
+   <a href="/images/GIS/rgbStackPlot.png"><img src="/images/GIS/rgbStackPlot.png" /></a>
+ <figcaption>All rasters in the rasterstack plotted.</figcaption>
+</figure>
+
+<p>You can also explore the data.</p>
+
+<pre><code>#look at histogram of reflectance values for all rasters
+hist(rgbRaster)
+</code></pre>
+
+<figure>
+   <a href="/images/GIS/RGBhist.png"><img src="/images/GIS/RGBhist.png" /></a>
+ <figcaption>Histogram of reflectance values for each raster in the raster stack.</figcaption>
+</figure>
+
+<pre><code>#remember that crop function? You can crop all rasters within a raster stack too
+#finally you can crop all rasters within a raster stack!
+rgbRaster_crop &lt;- crop(rgbRaster, cropBox)
+plot(rgbRaster_crop)
+</code></pre>
+
+<figure>
+   <a href="/images/GIS/cropRaster2.png"><img src="/images/GIS/cropRaster2.png" /></a>
+ <figcaption>Histogram of reflectance values for each raster in the raster stack.</figcaption>
+</figure>
+
+<h2 id="raster-bricks-in-r">Raster Bricks in R</h2>
+<p>Now we have a list of rasters in a stack. These rasters are all the same extent CRS and resolution but a raster brick will create one raster object in R that contains all of the rasters we can use this object to quickly create RGB images!</p>
+
+<pre><code>#create raster brick
+RGBbrick &lt;- brick(rgbRaster)
+</code></pre>
+
+<h2 id="write-a-raster-to-a-geotiff-file-in-r">Write a raster to a Geotiff File in R</h2>
+
+<p>We can write out the raster in tiff format as well. When we do this it will copy the CRS, extent and resolution information so the data will read properly into a GIS as well. Note that this writes the raster in the order they are in - in the stack. In this case, the blue (band 19) is first but it’s looking for the red band first (RGB). One way around this is to generate a new raster stack, ordering the rasters in the proper - red, green and blue format.</p>
+
+<pre><code>#Make a new stack in the order we want the data in:
+finalRGBstack &lt;- stack(rgbRaster$band58,rgbRaster$band34,rgbRaster$band19)
+#write the geotiff
+writeRaster(finalRGBstack,"rgbRaster.tiff","GTiff", overwrite=TRUE)
+</code></pre>
+
+
+
+
+
+<!-- The code directly below is required to generate tags and categories at the page bottom-->
+
+
+
+<!-- This code generates the category link at the bottom of the page-->
+
+		
+            
+                
+            
+                
+                    
+                
+            
+            
+                
+            
+        
+
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                
+                    
+                    
+                
+            
+                
+                    
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                    
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                    
+                    
+                
+            
+        
+
+<!-- remove the stuff above if the site slows down - this is to populate tags -->
+
+
+      <hr />
+      
+
+<div id="relatedCode">
+<h2>GET RELATED CODE</h2>
+Right Click to download associated code:
+<ul>
+	<li>
+ 	<a href="/code/r_RasterFundamentals.R" class="btn btn-info"> r_RasterFundamentals.R </a> </li>
+
+	
+</ul>
+</div>
+
+      <footer role="contentinfo">
+        <div class="article-author-bottom">
+          
+
+	 <img src="http://localhost:4000/images/profilePic_circle.png" class="bio-photo" alt="NEON EDUCATION bio photo"></a>
+
+
+
+<h3>NEON EDUCATION</h3>
+<p>Devoted to open data and open source in science and education.</p>
+
+
+<h3>Activities By Topic</h3>
+
+
+  
+    
+      <h5><a href="/lidar">LiDAR  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (4) 
+     </a></h5>
+
+
+  
+    
+  
+    
+      <h5><a href="/R">R programming  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (15) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/data-viz">Data Visualization  
+    
+  
+    
+   
+      (2) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+      <h5><a href="/GIS-Spatial-Data">Spatial Data & GIS  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (3) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/hyperspectral-remote-sensing">Hyperspectral Remote Sensing  
+    
+  
+    
+  
+    
+   
+      (5) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/HDF5">Hierarchical Data Formats (HDF5)  
+    
+  
+    
+  
+    
+  
+    
+   
+      (8) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/Data-Workshops">Data Workshops  
+    
+   
+      (3) 
+     </a></h5>
+ 
+
+
+<h4><a href="/activities/">View ALL Activities</a></h4>
+<h4><a href="/activities-by-tag/">Activities by Tag</a></h4>
+
+<br><br><br>
+
+
+<a href="http://twitter.com/leahawasser" class="author-social" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a>
+
+<a href="https://youtube.com/user/" class="author-social" target="_blank"><i class="fa fa-fw fa-youtube-square"></i> Youtube</a>
+
+
+
+
+<a href="http://github.com/lwasser" class="author-social" target="_blank"><i class="fa fa-github"></i> Github</a>
+
+
+
+
+
+
+
+<br><br><br>
+<h3>Blog.Roll</h3>
+<a href="http://www.r-bloggers.com" target="_blank">R Bloggers</a>
+
+        </div>
+        <p class="byline id="post-meta"><strong>Raster Data in R - The Basics</strong> was posted in <span class="label" style="background-color:#1abc9c"><a href="/coding-and-informatics/">Coding and Informatics</a></span> with <i class="fa fa-tags"></i>: <a href="/hyperspectral-remote-sensing/">Hyperspectral Remote Sensing</a>, <a href="/R/">R programming</a>, <a href="/GIS-Spatial-Data/">Spatial Data & GIS</a>
+       on <time datetime="2015-01-26T13:49:52-07:00">January 26, 2015</time> by Leah A. Wasser.  <a href="http://localhost:4000/about" title="About NEON EDUCATION">About NEON EDUCATION</a>.</p>
+      </footer>
+
+
+    <!-- /.article-wrap -->
+
+  
+    <section id="disqus_thread"></section><!-- /#disqus_thread -->
+  
+
+  </div>
+  </article>
+</div><!-- /#main -->
+
+
+
+<div class="footer-wrap">
+  <div class="related-articles">
+  <!-- <h4>You might also enjoy <small class="pull-right">(<a href="http://localhost:4000/posts/">View all activities</a>)</small></h4> -->
+<h2><a>Related Content:GIS-Spatial-Data</a></h2>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <ul class="posts">
+        <li><a class="post-link" href="/R/Raster-Data-In-R/">Raster Data in R - The Basics</a></li>
+        </ul>
+    
+
+    
+        <ul class="posts">
+        <li><a class="post-link" href="/GIS-Spatial-Data/Working-With-Rasters/">Working With Rasters in R, Python, QGIS and Other Tools</a></li>
+        </ul>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <ul class="posts">
+        <li><a class="post-link" href="/working-with-field-data/Field-Data-Polygons-From-Centroids">Activity: Creating A Square Buffer Around a Plot Centroid in R</a></li>
+        </ul>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div><!-- /.related-articles -->
+  <footer>
+    <span>&copy; 2015 National Ecological Observatory Network (NEON) -- Boulder, Colorado. <a href="http://www.neoninc.org" target=_blank></a>
+We love feedback! Email: lwasser at neoninc.org or tweet @leahawasser .
+
+<p>Powered by <a href="http://jekyllrb.com">Jekyll</a> A huge shot out to creator of the <a href="http://mademistakes.com/minimal-mistakes/">Minimal Mistakes</a> theme.</p></span>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-52746937-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-52746937-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'neondataskills'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+</body>
+</html>

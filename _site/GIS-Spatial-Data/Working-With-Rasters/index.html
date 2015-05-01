@@ -1,0 +1,880 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Working With Rasters in R, Python, QGIS and Other Tools &#8211; Work with Data - NEON Education</title>
+<meta name="description" content="Learn about the key attributes needed to work with raster data in tools like R, Python and QGIS.">
+<meta name="keywords" content="R, hyperspectral-remote-sensing, GIS-Spatial-Data">
+<!-- Twitter Cards -->
+	
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:image" content=
+			
+				"http://localhost:4000/images/hierarchy_folder_purple.png"
+			
+		>
+	
+	<meta name="twitter:title" content="Working With Rasters in R, Python, QGIS and Other Tools">
+	<meta name="twitter:description" content="Learn about the key attributes needed to work with raster data in tools like R, Python and QGIS.">
+	<meta name="twitter:creator" content="@leahawasser">
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Working With Rasters in R, Python, QGIS and Other Tools">
+<meta property="og:description" content="Learn about the key attributes needed to work with raster data in tools like R, Python and QGIS.">
+<meta property="og:url" content="http://localhost:4000/GIS-Spatial-Data/Working-With-Rasters/">
+<meta property="og:site_name" content="Work with Data - NEON Education">
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/GIS-Spatial-Data/Working-With-Rasters/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Work with Data - NEON Education Feed">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|PT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.min.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+
+<link rel="stylesheet" href="/assets/highlightjs/styles/zenburn.css">
+<script src="/assets/highlightjs/highlight.packR.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://localhost:4000">Work with Data - NEON Education</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				<li><a href="http://localhost:4000/activities/" >All Data Tutorials</a></li>
+		        
+				<li><a href="http://localhost:4000/about/" >About</a></li>
+		        
+				<li><a href="http://localhost:4000/Data-Workshops/" >Data Workshops</a></li>
+		        
+				<li><a href="http://neoninc.org" target="_blank">NEON Website</a></li>
+		        
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+  <div class="image-wrap">
+  <img src=
+    
+      "http://localhost:4000/images/hierarchy_folder_purple.png"
+    
+  alt="Working With Rasters in R, Python, QGIS and Other Tools feature image">
+  
+    <span class="image-credit">Photo Credit: <a href="http://www.neoninc.org">The Artistry of Colin Williams, NEON</a></span>
+  
+  </div><!-- /.image-wrap -->
+
+
+
+
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+
+    
+
+	 <img src="http://localhost:4000/images/profilePic_circle.png" class="bio-photo" alt="NEON EDUCATION bio photo"></a>
+
+
+
+<h3>NEON EDUCATION</h3>
+<p>Devoted to open data and open source in science and education.</p>
+
+
+<h3>Activities By Topic</h3>
+
+
+  
+    
+      <h5><a href="/lidar">LiDAR  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (4) 
+     </a></h5>
+
+
+  
+    
+  
+    
+      <h5><a href="/R">R programming  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (15) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/data-viz">Data Visualization  
+    
+  
+    
+   
+      (2) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+      <h5><a href="/GIS-Spatial-Data">Spatial Data & GIS  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (3) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/hyperspectral-remote-sensing">Hyperspectral Remote Sensing  
+    
+  
+    
+  
+    
+   
+      (5) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/HDF5">Hierarchical Data Formats (HDF5)  
+    
+  
+    
+  
+    
+  
+    
+   
+      (8) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/Data-Workshops">Data Workshops  
+    
+   
+      (3) 
+     </a></h5>
+ 
+
+
+<h4><a href="/activities/">View ALL Activities</a></h4>
+<h4><a href="/activities-by-tag/">Activities by Tag</a></h4>
+
+<br><br><br>
+
+
+<a href="http://twitter.com/leahawasser" class="author-social" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a>
+
+<a href="https://youtube.com/user/" class="author-social" target="_blank"><i class="fa fa-fw fa-youtube-square"></i> Youtube</a>
+
+
+
+
+<a href="http://github.com/lwasser" class="author-social" target="_blank"><i class="fa fa-github"></i> Github</a>
+
+
+
+
+
+
+
+<br><br><br>
+<h3>Blog.Roll</h3>
+<a href="http://www.r-bloggers.com" target="_blank">R Bloggers</a>
+
+
+  </div>
+  <article>
+    <div class="headline-wrap">
+      
+        <h1><a href="http://localhost:4000/GIS-Spatial-Data/Working-With-Rasters/" rel="bookmark" title="Working With Rasters in R, Python, QGIS and Other Tools">Working With Rasters in R, Python, QGIS and Other Tools</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+
+    <div class="article-wrap">
+      <section id="table-of-contents" class="toc">
+  <header>
+    <h3>Contents</h3>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#spatial-resolution">Spatial Resolution</a></li>
+  <li><a href="#spatial-extent">Spatial Extent</a></li>
+  <li><a href="#coordinate-reference-system--projection-information">Coordinate Reference System / Projection Information</a></li>
+  <li><a href="#what-makes-spatial-data-line-up-on-a-map">What Makes Spatial Data Line Up On A Map?</a></li>
+  <li><a href="#reprojecting-data">Reprojecting Data</a></li>
+</ul>
+
+  </div>
+</section>
+<!-- /#table-of-contents -->
+
+<div id="objectives">
+NOTE: this page is under development! We welcome any and all feedback!
+&gt; 
+<h3>Goals / Objectives</h3>
+
+After completing this activity, you will:
+<ol>
+<li>Know the key attributes required to work with raster data including: spatial extent, coordinate reference system and spatial resolution.</li>
+<li>Understand what a spatial extent it.</li>
+<li>Generally understand spatial references of large raster data cubes.</li>
+</ol>
+
+<h3>You will need:</h3>
+A working thinking cap. This is an overview / background activity.
+</div>
+
+<h3 id="getting-started">Getting Started</h3>
+<p>This activity with overview the key attributes that you need to extract for a raster dataset’s metadata in tools like R, Python and QGIS. Raster data, and raster data cubes can be organized and stored in many different ways. To understand raster datasets we often need to explore the data first to tease out key metadata or attributes including:</p>
+
+<ol>
+  <li>Spatial Resolution</li>
+  <li>Coordinate Reference System / Projection Information</li>
+  <li>Raster Extent</li>
+</ol>
+
+<p>This post will overview the key components of hyperspectral remote sensing data that are required to begin working with the data in a tool like <code>R</code> or <code>Python</code>.</p>
+
+<h2 id="spatial-resolution">Spatial Resolution</h2>
+<p>A raster consists of a series of uniform pixels, each with the same dimension and shape. In the case of rasters derived from airborne sensors, each pixel represents an area of space on the ground. The size of the area on the ground that each pixel covers is known as the spatial resolution of the image. For instance, an image that has a 1m spatial resolution means that each pixel in the image represents a 1 m x 1 m area on the ground.</p>
+
+<figure>
+    <a href="/images/hyperspectral/pixelDetail.png"><img src="/images/hyperspectral/pixelDetail.png" /></a>
+    <figcaption>The spatial resolution of a raster refers the size of each cell in meters. This size in turn relates to the area on the ground that the pixel represents.</figcaption>
+</figure>
+
+<h2 id="spatial-extent">Spatial Extent</h2>
+<p>The spatial extent of a raster, represents the “X, Y” coordinates of the corners of the raster in geographic space. This information, in addition to the cell size or spatial resolution, tells the program how to place or render each pixel in 2 dimensional space.  Tools like <code>R</code>, using supporting packages such as <code>GDAL</code> and associated raster tools often have comments that allow you to define the extent of a raster that is created within the tool. </p>
+
+<pre><code>#set raster extent (R Code)
+#xMN = minimum x value, xMX=maximum x value, yMN - minimum Y value, yMX=maximum Y value
+	rasExt &lt;- extent(xMN,xMX,yMN,yMX)
+</code></pre>
+
+<figure>
+    <a href="/images/hyperspectral/sat_image_corners.png"><img src="/images/hyperspectral/sat_image_corners.png" /></a>
+   
+    <figcaption>To be located geographically, the images location needs to be defined in geographic space (on a spatial grid). The spatial extent defines the 4 corners of a raster, within a given coordinate reference system.</figcaption>
+</figure>
+<figure>
+	<a href="/images/hyperspectral/sat_image_lat_lon.png"><img src="/images/hyperspectral/sat_image_lat_lon.png" /></a>
+    
+    <figcaption>The X and Y mins and max values relate to the coordinate system that the file is in (see below). </figcaption>
+</figure>
+
+<h2 id="coordinate-reference-system--projection-information">Coordinate Reference System / Projection Information</h2>
+
+<blockquote>
+  <p>A spatial reference system (SRS) or coordinate reference system (CRS) is a coordinate-based local, regional or global system used to locate geographical entities. – Wikipedia</p>
+</blockquote>
+
+<p>The earth is round. This is not an new concept by any means, however we need to remember this when we talk about coordinate reference systems associated with spatial data. When we make maps on paper or on a computer screen, we are moving from a 3 dimensional space (the globe) to 2 dimensions (our computer screens or a piece of paper). To keep this short, the projection of a dataset relates to how the data are “flattened” in geographic space so our human eyes and brains can make sense of the information in 2 dimensions. </p>
+
+<p>The projection refers to the mathematical calculations performed to “flatten the data” in into 2D space. The coordinate system references to the x and y coordinate space, that is associated with the projection used to flatten the data. If you have the same dataset, saved in two different projections, it won’t line up.</p>
+
+<figure>
+    <a href="https://source.opennews.org/media/cache/b9/4f/b94f663c79024f0048ae7b4f88060cb5.jpg"><img src="https://source.opennews.org/media/cache/b9/4f/b94f663c79024f0048ae7b4f88060cb5.jpg" /></a>
+    
+    <figcaption>Maps of the United States in different projections. Notice the differences in shape associated with each different projection. These differences are a direct result of the calculations used to "flatten" the data onto a 2 dimensional map. Source: opennews.org</figcaption>
+</figure>
+
+<p><a href="https://source.opennews.org/en-US/learning/choosing-right-map-projection/" target="_blank">Read more about projections.</a></p>
+
+<h4 id="how-map-projections-can-fool-the-eye">How Map Projections Can Fool the Eye</h4>
+<p>Check out this short video highlighting how map projections can make continents seems proportionally larger or smaller than they actually are!</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/KUF_Ckv8HbE" frameborder="0" allowfullscreen=""></iframe>
+
+<h2 id="what-makes-spatial-data-line-up-on-a-map">What Makes Spatial Data Line Up On A Map?</h2>
+<p>There are lots of great resources that describe Coordinate Reference systems and projections in greater detail. However, for the purposes of this activity, what is important to understand is that data, from the same location, but saved in different projections <strong>will not line up in any GIS or other program</strong>. Thus it’s important when working with spatial data in a program like <code>R</code> or <code>Python</code> to identify the coordinate reference system applied to the data, and to grab that information and retain it when you process / analyze the data.</p>
+
+<h2 id="reprojecting-data">Reprojecting Data</h2>
+<p>If you run into multiple spatial datasets with varying projections, you can always <strong>reproject</strong> the data so that they are all in the same projection. Python and R both have reprojection tools that perform this task.</p>
+
+<pre><code># reproject data to CRS of dataset2 in R
+reprojectedData &lt;- spTransform(dataset,CRS(proj4string(dataset2))) 
+</code></pre>
+
+
+
+
+
+<!-- The code directly below is required to generate tags and categories at the page bottom-->
+
+
+
+<!-- This code generates the category link at the bottom of the page-->
+
+		
+            
+                
+                    
+                
+            
+                
+            
+            
+                
+            
+        
+
+        
+            
+            
+                
+                    
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                    
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                
+                    
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                    
+                    
+                
+            
+        
+
+<!-- remove the stuff above if the site slows down - this is to populate tags -->
+
+
+      <hr />
+      
+
+	
+</ul>
+</div>
+
+      <footer role="contentinfo">
+        <div class="article-author-bottom">
+          
+
+	 <img src="http://localhost:4000/images/profilePic_circle.png" class="bio-photo" alt="NEON EDUCATION bio photo"></a>
+
+
+
+<h3>NEON EDUCATION</h3>
+<p>Devoted to open data and open source in science and education.</p>
+
+
+<h3>Activities By Topic</h3>
+
+
+  
+    
+      <h5><a href="/lidar">LiDAR  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (4) 
+     </a></h5>
+
+
+  
+    
+  
+    
+      <h5><a href="/R">R programming  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (15) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/data-viz">Data Visualization  
+    
+  
+    
+   
+      (2) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+      <h5><a href="/GIS-Spatial-Data">Spatial Data & GIS  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (3) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/hyperspectral-remote-sensing">Hyperspectral Remote Sensing  
+    
+  
+    
+  
+    
+   
+      (5) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/HDF5">Hierarchical Data Formats (HDF5)  
+    
+  
+    
+  
+    
+  
+    
+   
+      (8) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/Data-Workshops">Data Workshops  
+    
+   
+      (3) 
+     </a></h5>
+ 
+
+
+<h4><a href="/activities/">View ALL Activities</a></h4>
+<h4><a href="/activities-by-tag/">Activities by Tag</a></h4>
+
+<br><br><br>
+
+
+<a href="http://twitter.com/leahawasser" class="author-social" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a>
+
+<a href="https://youtube.com/user/" class="author-social" target="_blank"><i class="fa fa-fw fa-youtube-square"></i> Youtube</a>
+
+
+
+
+<a href="http://github.com/lwasser" class="author-social" target="_blank"><i class="fa fa-github"></i> Github</a>
+
+
+
+
+
+
+
+<br><br><br>
+<h3>Blog.Roll</h3>
+<a href="http://www.r-bloggers.com" target="_blank">R Bloggers</a>
+
+        </div>
+        <p class="byline id="post-meta"><strong>Working With Rasters in R, Python, QGIS and Other Tools</strong> was posted in <span class="label" style="background-color:#1abc9c"><a href="/remote-sensing/">Remote Sensing</a></span> with <i class="fa fa-tags"></i>: <a href="/R/">R programming</a>, <a href="/hyperspectral-remote-sensing/">Hyperspectral Remote Sensing</a>, <a href="/GIS-Spatial-Data/">Spatial Data & GIS</a>
+       on <time datetime="2015-01-15T13:49:52-07:00">January 15, 2015</time> by Leah A. Wasser.  <a href="http://localhost:4000/about" title="About NEON EDUCATION">About NEON EDUCATION</a>.</p>
+      </footer>
+
+
+    <!-- /.article-wrap -->
+
+  
+    <section id="disqus_thread"></section><!-- /#disqus_thread -->
+  
+
+  </div>
+  </article>
+</div><!-- /#main -->
+
+
+
+<div class="footer-wrap">
+  <div class="related-articles">
+  <!-- <h4>You might also enjoy <small class="pull-right">(<a href="http://localhost:4000/posts/">View all activities</a>)</small></h4> -->
+<h2><a>Related Content:GIS-Spatial-Data</a></h2>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <ul class="posts">
+        <li><a class="post-link" href="/R/Raster-Data-In-R/">Raster Data in R - The Basics</a></li>
+        </ul>
+    
+
+    
+        <ul class="posts">
+        <li><a class="post-link" href="/GIS-Spatial-Data/Working-With-Rasters/">Working With Rasters in R, Python, QGIS and Other Tools</a></li>
+        </ul>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <ul class="posts">
+        <li><a class="post-link" href="/working-with-field-data/Field-Data-Polygons-From-Centroids">Activity: Creating A Square Buffer Around a Plot Centroid in R</a></li>
+        </ul>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div><!-- /.related-articles -->
+  <footer>
+    <span>&copy; 2015 National Ecological Observatory Network (NEON) -- Boulder, Colorado. <a href="http://www.neoninc.org" target=_blank></a>
+We love feedback! Email: lwasser at neoninc.org or tweet @leahawasser .
+
+<p>Powered by <a href="http://jekyllrb.com">Jekyll</a> A huge shot out to creator of the <a href="http://mademistakes.com/minimal-mistakes/">Minimal Mistakes</a> theme.</p></span>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-52746937-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-52746937-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'neondataskills'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+</body>
+</html>

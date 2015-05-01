@@ -1,0 +1,807 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Working With Functions in R &#8211; Work with Data - NEON Education</title>
+<meta name="description" content="This activity will provide the basics of creating a function in R.">
+<meta name="keywords" content="R">
+<!-- Twitter Cards -->
+	
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:image" content=
+			
+				"http://localhost:4000/images/codedFieldJournal.png"
+			
+		>
+	
+	<meta name="twitter:title" content="Working With Functions in R">
+	<meta name="twitter:description" content="This activity will provide the basics of creating a function in R.">
+	<meta name="twitter:creator" content="@leahawasser">
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Working With Functions in R">
+<meta property="og:description" content="This activity will provide the basics of creating a function in R.">
+<meta property="og:url" content="http://localhost:4000/Using-R/Working-With-Functions">
+<meta property="og:site_name" content="Work with Data - NEON Education">
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/Using-R/Working-With-Functions">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Work with Data - NEON Education Feed">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|PT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.min.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+
+<link rel="stylesheet" href="/assets/highlightjs/styles/zenburn.css">
+<script src="/assets/highlightjs/highlight.packR.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://localhost:4000">Work with Data - NEON Education</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				<li><a href="http://localhost:4000/activities/" >All Data Tutorials</a></li>
+		        
+				<li><a href="http://localhost:4000/about/" >About</a></li>
+		        
+				<li><a href="http://localhost:4000/Data-Workshops/" >Data Workshops</a></li>
+		        
+				<li><a href="http://neoninc.org" target="_blank">NEON Website</a></li>
+		        
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+  <div class="image-wrap">
+  <img src=
+    
+      "http://localhost:4000/images/codedFieldJournal.png"
+    
+  alt="Working With Functions in R feature image">
+  
+    <span class="image-credit">Photo Credit: <a href="http://www.neoninc.org">NEON staff working in the field</a></span>
+  
+  </div><!-- /.image-wrap -->
+
+
+
+
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+
+    
+
+	 <img src="http://localhost:4000/images/profilePic_circle.png" class="bio-photo" alt="NEON EDUCATION bio photo"></a>
+
+
+
+<h3>NEON EDUCATION</h3>
+<p>Devoted to open data and open source in science and education.</p>
+
+
+<h3>Activities By Topic</h3>
+
+
+  
+    
+      <h5><a href="/lidar">LiDAR  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (4) 
+     </a></h5>
+
+
+  
+    
+  
+    
+      <h5><a href="/R">R programming  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (15) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/data-viz">Data Visualization  
+    
+  
+    
+   
+      (2) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+      <h5><a href="/GIS-Spatial-Data">Spatial Data & GIS  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (3) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/hyperspectral-remote-sensing">Hyperspectral Remote Sensing  
+    
+  
+    
+  
+    
+   
+      (5) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/HDF5">Hierarchical Data Formats (HDF5)  
+    
+  
+    
+  
+    
+  
+    
+   
+      (8) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/Data-Workshops">Data Workshops  
+    
+   
+      (3) 
+     </a></h5>
+ 
+
+
+<h4><a href="/activities/">View ALL Activities</a></h4>
+<h4><a href="/activities-by-tag/">Activities by Tag</a></h4>
+
+<br><br><br>
+
+
+<a href="http://twitter.com/leahawasser" class="author-social" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a>
+
+<a href="https://youtube.com/user/" class="author-social" target="_blank"><i class="fa fa-fw fa-youtube-square"></i> Youtube</a>
+
+
+
+
+<a href="http://github.com/lwasser" class="author-social" target="_blank"><i class="fa fa-github"></i> Github</a>
+
+
+
+
+
+
+
+<br><br><br>
+<h3>Blog.Roll</h3>
+<a href="http://www.r-bloggers.com" target="_blank">R Bloggers</a>
+
+
+  </div>
+  <article>
+    <div class="headline-wrap">
+      
+        <h1><a href="http://localhost:4000/Using-R/Working-With-Functions" rel="bookmark" title="Working With Functions in R">Working With Functions in R</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+
+    <div class="article-wrap">
+      <section id="table-of-contents" class="toc">
+  <header>
+    <h3>Contents</h3>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#creating-functions">Creating Functions</a>    <ul>
+      <li><a href="#objectives">Objectives</a></li>
+      <li><a href="#getting-started">Getting Started</a></li>
+      <li><a href="#composing-functions">Composing Functions</a></li>
+      <li><a href="#lets-build-a-function">Let’s Build a Function</a></li>
+    </ul>
+  </li>
+</ul>
+
+  </div>
+</section>
+<!-- /#table-of-contents -->
+
+<h1 id="creating-functions">Creating Functions</h1>
+
+<p>Sometimes we need to perform a calculation or a set of calculations, multiple times in our code. For example, we might need to convert units from Celcius to Kelvin, across multiple datasets and through time. </p>
+
+<p>We could write out the equation over and over in our code. OR we could chose to build a function that allows us to repeat several operations with a single command. This activity will focus on creating functions in R.</p>
+
+<h2 id="objectives">Objectives</h2>
+
+<ul>
+  <li>Define a function that takes parameters (input values).</li>
+  <li>Return a value from a function.</li>
+  <li>???Test and debug a function.???</li>
+  <li>Set default values for function parameters.</li>
+  <li>Explain why we should divide programs into small, single-purpose functions.</li>
+  <li>Learn how to define a Function</li>
+</ul>
+
+<h2 id="getting-started">Getting Started</h2>
+<p>Let’s start by defining a function <code>fahr_to_kelvin</code> that converts temperature values from Fahrenheit to Kelvin:</p>
+
+<pre><code>fahr_to_kelvin &lt;- function(temp) {
+    kelvin &lt;- ((temp - 32) * (5/9)) + 273.15
+    kelvin
+}
+</code></pre>
+
+<p>Notice the syntax used to define this function:</p>
+
+<blockquote>
+  <p>FunctionNameHere &lt;- function(InputVariable-or-variables-here)</p>
+</blockquote>
+
+<p>The definition begins with the name of your new function, which is followed by the call to make it a <code>function</code> and a parenthesized list of parameter names. The parameters are the input values that the function will use to perform any calculations. In this case, the input might be the temperature value that we wish to convert from fahrenheit to kelvin. You can have as many input parameters as you would like (but too many might be bad style). The body, or implementation, is surrounded by curly braces <code>{ }</code>. In many languages, the body of the function - the statements that are executed when it runs - must be indented, typically using 4 spaces. </p>
+
+<blockquote>
+  <p>HINT: While it is not mandatory to indent your code 4 spaces within a function, it is  strongly recommended as good practice!</p>
+</blockquote>
+
+<p>When we call the function, the values we pass to it are assigned to those variables so that we can use them inside the function. The last line within the function is what R will evaluate as a returning value. Remember that the last line has to be a command that will print to the screen, and not an object definition, otherwise the function will return nothing - it will work, but will provide no output. For example, let’s try running our function. Calling our own function is no different from calling any other function:</p>
+
+<pre><code>fahr_to_kelvin(32)
+paste('boiling point of water:', fahr_to_kelvin(212))
+</code></pre>
+
+<p>We’ve successfully called the function that we defined, and we have access to the value that we returned. However, it the function was redefined as follows</p>
+
+<pre><code>fahr_to_kelvin &lt;- function(temp) {
+    kelvin &lt;- ((temp - 32) * (5/9)) + 273.15
+}
+</code></pre>
+
+<p>Now typing</p>
+
+<pre><code>fahr_to_kelvin(32)
+</code></pre>
+
+<p>Will return nothing. However try assigning the function to a variable “a”.</p>
+
+<pre><code>a &lt;- fahr_to_kelvin(32)
+</code></pre>
+
+<p>Now, what happens when you type <code>a</code> ?</p>
+
+<p>==============================</p>
+
+<h2 id="composing-functions">Composing Functions</h2>
+
+<p>Now that we’ve seen how to turn Fahrenheit into Kelvin, it’s easy to turn Kelvin into Celsius:</p>
+
+<pre><code>kelvin_to_celsius &lt;- function(temp) {
+    Celsius &lt;- temp - 273.15
+	Celsius
+}
+
+paste('absolute zero in Celsius:', kelvin_to_celsius(0))
+</code></pre>
+
+<p>What about converting Fahrenheit to Celsius? We could write out the formula, but we don’t need to. Instead, we can compose the two functions we have already created:</p>
+
+<pre><code>fahr_to_celsius &lt;- function(temp) {
+	temp_k &lt;- fahr_to_kelvin(temp)
+	result &lt;- kelvin_to_celsius(temp_k)
+    result
+}
+
+paste('freezing point of water in Celsius:', fahr_to_celsius(32.0))
+</code></pre>
+
+<p>This is our first taste of how larger programs are built: we define basic operations, then combine them in ever-large chunks to get the effect we want. 
+Real-life functions will usually be larger than the ones shown here—typically half a dozen to a few dozen lines—but they shouldn’t ever be much longer than that, or the next person who reads it won’t be able to understand what’s going on. </p>
+
+<h2 id="lets-build-a-function">Let’s Build a Function</h2>
+
+<p>So now we’ve learned the basics of building functions in R. Let’s create one of our own. The function that we will build, </p>
+
+
+
+
+<!-- The code directly below is required to generate tags and categories at the page bottom-->
+
+
+
+<!-- This code generates the category link at the bottom of the page-->
+
+		
+            
+                
+            
+                
+                    
+                
+            
+            
+                
+            
+        
+
+        
+            
+            
+                
+                    
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                    
+                    
+                
+            
+        
+
+<!-- remove the stuff above if the site slows down - this is to populate tags -->
+
+
+      <hr />
+      
+
+	
+</ul>
+</div>
+
+      <footer role="contentinfo">
+        <div class="article-author-bottom">
+          
+
+	 <img src="http://localhost:4000/images/profilePic_circle.png" class="bio-photo" alt="NEON EDUCATION bio photo"></a>
+
+
+
+<h3>NEON EDUCATION</h3>
+<p>Devoted to open data and open source in science and education.</p>
+
+
+<h3>Activities By Topic</h3>
+
+
+  
+    
+      <h5><a href="/lidar">LiDAR  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (4) 
+     </a></h5>
+
+
+  
+    
+  
+    
+      <h5><a href="/R">R programming  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (15) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/data-viz">Data Visualization  
+    
+  
+    
+   
+      (2) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+      <h5><a href="/GIS-Spatial-Data">Spatial Data & GIS  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (3) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/hyperspectral-remote-sensing">Hyperspectral Remote Sensing  
+    
+  
+    
+  
+    
+   
+      (5) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/HDF5">Hierarchical Data Formats (HDF5)  
+    
+  
+    
+  
+    
+  
+    
+   
+      (8) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/Data-Workshops">Data Workshops  
+    
+   
+      (3) 
+     </a></h5>
+ 
+
+
+<h4><a href="/activities/">View ALL Activities</a></h4>
+<h4><a href="/activities-by-tag/">Activities by Tag</a></h4>
+
+<br><br><br>
+
+
+<a href="http://twitter.com/leahawasser" class="author-social" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a>
+
+<a href="https://youtube.com/user/" class="author-social" target="_blank"><i class="fa fa-fw fa-youtube-square"></i> Youtube</a>
+
+
+
+
+<a href="http://github.com/lwasser" class="author-social" target="_blank"><i class="fa fa-github"></i> Github</a>
+
+
+
+
+
+
+
+<br><br><br>
+<h3>Blog.Roll</h3>
+<a href="http://www.r-bloggers.com" target="_blank">R Bloggers</a>
+
+        </div>
+        <p class="byline id="post-meta"><strong>Working With Functions in R</strong> was posted in <span class="label" style="background-color:#1abc9c"><a href="/coding-and-informatics/">Coding and Informatics</a></span> with <i class="fa fa-tag"></i>: <a href="/R/">R programming</a>
+       on <time datetime="2014-10-29T14:49:52-06:00">October 29, 2014</time> by Adapted from Software Carpentry Materials by Leah A. Wasser.  <a href="http://localhost:4000/about" title="About NEON EDUCATION">About NEON EDUCATION</a>.</p>
+      </footer>
+
+
+    <!-- /.article-wrap -->
+
+  
+
+  </div>
+  </article>
+</div><!-- /#main -->
+
+
+
+<div class="footer-wrap">
+  <div class="related-articles">
+  <!-- <h4>You might also enjoy <small class="pull-right">(<a href="http://localhost:4000/posts/">View all activities</a>)</small></h4> -->
+<h2><a>Related Content:</a></h2>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div><!-- /.related-articles -->
+  <footer>
+    <span>&copy; 2015 National Ecological Observatory Network (NEON) -- Boulder, Colorado. <a href="http://www.neoninc.org" target=_blank></a>
+We love feedback! Email: lwasser at neoninc.org or tweet @leahawasser .
+
+<p>Powered by <a href="http://jekyllrb.com">Jekyll</a> A huge shot out to creator of the <a href="http://mademistakes.com/minimal-mistakes/">Minimal Mistakes</a> theme.</p></span>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-52746937-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-52746937-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+</body>
+</html>

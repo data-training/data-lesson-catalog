@@ -1,0 +1,785 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Activity: Installing & Updating Packages in R &#8211; Work with Data - NEON Education</title>
+<meta name="description" content="This activity provides the basics of installing and working with packaged in R">
+<meta name="keywords" content="R">
+<!-- Twitter Cards -->
+	
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:image" content=
+			
+				"http://localhost:4000/images/codedFieldwork1.png"
+			
+		>
+	
+	<meta name="twitter:title" content="Activity: Installing & Updating Packages in R">
+	<meta name="twitter:description" content="This activity provides the basics of installing and working with packaged in R">
+	<meta name="twitter:creator" content="@leahawasser">
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Activity: Installing & Updating Packages in R">
+<meta property="og:description" content="This activity provides the basics of installing and working with packaged in R">
+<meta property="og:url" content="http://localhost:4000/R/Packages-In-R/">
+<meta property="og:site_name" content="Work with Data - NEON Education">
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/R/Packages-In-R/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Work with Data - NEON Education Feed">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|PT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.min.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+
+<link rel="stylesheet" href="/assets/highlightjs/styles/zenburn.css">
+<script src="/assets/highlightjs/highlight.packR.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://localhost:4000">Work with Data - NEON Education</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				<li><a href="http://localhost:4000/activities/" >All Data Tutorials</a></li>
+		        
+				<li><a href="http://localhost:4000/about/" >About</a></li>
+		        
+				<li><a href="http://localhost:4000/Data-Workshops/" >Data Workshops</a></li>
+		        
+				<li><a href="http://neoninc.org" target="_blank">NEON Website</a></li>
+		        
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+  <div class="image-wrap">
+  <img src=
+    
+      "http://localhost:4000/images/codedFieldwork1.png"
+    
+  alt="Activity: Installing & Updating Packages in R feature image">
+  
+    <span class="image-credit">Photo Credit: <a href="http://www.neoninc.org">National Ecological Observatory Network (NEON) Higher Education</a></span>
+  
+  </div><!-- /.image-wrap -->
+
+
+
+
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+
+    
+
+	 <img src="http://localhost:4000/images/profilePic_circle.png" class="bio-photo" alt="NEON EDUCATION bio photo"></a>
+
+
+
+<h3>NEON EDUCATION</h3>
+<p>Devoted to open data and open source in science and education.</p>
+
+
+<h3>Activities By Topic</h3>
+
+
+  
+    
+      <h5><a href="/lidar">LiDAR  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (4) 
+     </a></h5>
+
+
+  
+    
+  
+    
+      <h5><a href="/R">R programming  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (15) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/data-viz">Data Visualization  
+    
+  
+    
+   
+      (2) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+      <h5><a href="/GIS-Spatial-Data">Spatial Data & GIS  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (3) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/hyperspectral-remote-sensing">Hyperspectral Remote Sensing  
+    
+  
+    
+  
+    
+   
+      (5) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/HDF5">Hierarchical Data Formats (HDF5)  
+    
+  
+    
+  
+    
+  
+    
+   
+      (8) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/Data-Workshops">Data Workshops  
+    
+   
+      (3) 
+     </a></h5>
+ 
+
+
+<h4><a href="/activities/">View ALL Activities</a></h4>
+<h4><a href="/activities-by-tag/">Activities by Tag</a></h4>
+
+<br><br><br>
+
+
+<a href="http://twitter.com/leahawasser" class="author-social" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a>
+
+<a href="https://youtube.com/user/" class="author-social" target="_blank"><i class="fa fa-fw fa-youtube-square"></i> Youtube</a>
+
+
+
+
+<a href="http://github.com/lwasser" class="author-social" target="_blank"><i class="fa fa-github"></i> Github</a>
+
+
+
+
+
+
+
+<br><br><br>
+<h3>Blog.Roll</h3>
+<a href="http://www.r-bloggers.com" target="_blank">R Bloggers</a>
+
+
+  </div>
+  <article>
+    <div class="headline-wrap">
+      
+        <h1><a href="http://localhost:4000/R/Packages-In-R/" rel="bookmark" title="Activity: Installing & Updating Packages in R">Activity: Installing & Updating Packages in R</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+
+    <div class="article-wrap">
+      <section id="table-of-contents" class="toc">
+  <header>
+    <h3>Contents</h3>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#what-youll-need">What you’ll need</a></li>
+  <li><a href="#what-youll-learn-here">What you’ll Learn Here</a>    <ul>
+      <li><a href="#about-packages-in-r">About Packages in R</a></li>
+      <li><a href="#installing-packages-in-r">Installing Packages in R</a></li>
+      <li><a href="#what-packages-are-installed-on-your-machine">What Packages are installed On Your Machine?</a></li>
+      <li><a href="#updating-packages">Updating Packages</a></li>
+      <li><a href="#activity">Activity</a></li>
+    </ul>
+  </li>
+</ul>
+
+  </div>
+</section>
+<!-- /#table-of-contents -->
+
+<h1 id="what-youll-need">What you’ll need</h1>
+<ol>
+  <li>R or R studio loaded on your computer</li>
+  <li>A functioning thinking cap.</li>
+</ol>
+
+<h1 id="what-youll-learn-here">What you’ll Learn Here</h1>
+<ul>
+  <li>The basics of what a package is in R</li>
+  <li>How to install a package in R</li>
+  <li>How to call upon (use) that installed package in R</li>
+  <li>How to update a package in R</li>
+  <li>How to see what packages are installed on your computer </li>
+</ul>
+
+<h2 id="about-packages-in-r">About Packages in R</h2>
+
+<p>Packages are collections of R functions, data, and compiled code in a well-defined format. When you install a package it gives you access to a set of commands that are not available in the base R set of functions. The directory where packages are stored is called the library. R comes with a standard set of packages. Others are available for download and installation. Once installed, they have to be loaded into the session to be used.</p>
+
+<h3 id="more-on-packages">More on Packages</h3>
+
+<ul>
+  <li><a href="http://www.statmethods.net/interface/packages.html" target="_blank">Definition adapted from the Quick-R website</a></li>
+  <li><a href="http://www.r-bloggers.com/installing-r-packages/" target="_blank">Read more about installing packages in R by R-bloggers.</a></li>
+</ul>
+
+<h2 id="installing-packages-in-r">Installing Packages in R</h2>
+<p>The website that hosts many of the R packages is called <a href="http://cran.r-project.org/" target="_blank">“CRAN”</a>. <code>install.packages("package-name")</code> will download a package from one of the <a href="http://cran.r-project.org/" target="_blank">CRAN mirrors where the packages are saved</a> assuming that a binary (or set of installation files) is available for your operating system. If you have not set a preferred CRAN mirror in your options(), then a menu will pop up asking you to choose a location from which you’d like to install your packages.</p>
+
+<p>To install packages, use the code: <code>install.packages('package-Name-Here)</code> So, for example, you can use the code below to install the sp and rgdal packages. NOTE: you can just type this into the command line of R to install each package. Once a package is installed, you don’t have to install it again! </p>
+
+<pre><code>install.packages(‘raster’)
+install.packages(‘sp’)
+</code></pre>
+
+<p>Now, by installing a package onto your machine, you are half way there. If you want to USE the package - or the functions contained in that package - in your code, you need to first CALL it. So, to call the raster package that we installed above, we would type <code>library(raster)</code>. </p>
+
+<p>In the code, it would look something like:</p>
+
+<pre><code>library(sp)
+library(dplyr)
+</code></pre>
+
+<h2 id="what-packages-are-installed-on-your-machine">What Packages are installed On Your Machine?</h2>
+<p>Good question - let’s find out. Use <code>old.packages()</code> to list all your locally installed packages that are now out of date. <code>update.packages()</code> will update all packages in the known libraries interactively. This can take a while if you haven’t done it recently. To update everything without any user intervention, use the <code>ask = FALSE</code> argument.</p>
+
+<p>In <a href="http://www.rstudio.com/" target="_blank">RStudio</a>, you can also manage packages using Tools -&gt; Install Packages.</p>
+
+<h2 id="updating-packages">Updating Packages</h2>
+<p>Sometimes packages are updated by the users who created them. Updating packages can sometimes make changes to both the package and also to how your code runs. If you already have a lot of code in R, be cautious about updating packages. Otherwise let’s just go ahead and update our packages so things are up to date.</p>
+
+<pre><code>{r, eval=FALSE}
+update.packages(ask = FALSE)
+</code></pre>
+
+<p>Use <code>old.packages()</code> to list all your locally-installed packages that are now out of date. <code>update.packages()</code> will update all packages in the known libraries interactively. This can take a while if you haven’t done it recently. To update everything without any user intervention, use the <code>ask = FALSE</code> argument.</p>
+
+<p><code>r
+update.packages(ask = FALSE)
+</code></p>
+
+<h2 id="activity">Activity</h2>
+
+<p>Following this activity, you should be able to do the following – so have at it!</p>
+
+<ul>
+  <li>Check to see if the dplyr package is installed on your computer</li>
+  <li>Next, install the “dplyr” package in R. if it’s already installed, consider a different package such as ggplot2.</li>
+</ul>
+
+
+
+
+
+<!-- The code directly below is required to generate tags and categories at the page bottom-->
+
+
+
+<!-- This code generates the category link at the bottom of the page-->
+
+		
+            
+                
+            
+                
+                    
+                
+            
+            
+                
+            
+        
+
+        
+            
+            
+                
+                    
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                    
+                    
+                
+            
+        
+
+<!-- remove the stuff above if the site slows down - this is to populate tags -->
+
+
+      <hr />
+      
+
+	
+</ul>
+</div>
+
+      <footer role="contentinfo">
+        <div class="article-author-bottom">
+          
+
+	 <img src="http://localhost:4000/images/profilePic_circle.png" class="bio-photo" alt="NEON EDUCATION bio photo"></a>
+
+
+
+<h3>NEON EDUCATION</h3>
+<p>Devoted to open data and open source in science and education.</p>
+
+
+<h3>Activities By Topic</h3>
+
+
+  
+    
+      <h5><a href="/lidar">LiDAR  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (4) 
+     </a></h5>
+
+
+  
+    
+  
+    
+      <h5><a href="/R">R programming  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (15) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/data-viz">Data Visualization  
+    
+  
+    
+   
+      (2) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+      <h5><a href="/GIS-Spatial-Data">Spatial Data & GIS  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (3) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/hyperspectral-remote-sensing">Hyperspectral Remote Sensing  
+    
+  
+    
+  
+    
+   
+      (5) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/HDF5">Hierarchical Data Formats (HDF5)  
+    
+  
+    
+  
+    
+  
+    
+   
+      (8) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/Data-Workshops">Data Workshops  
+    
+   
+      (3) 
+     </a></h5>
+ 
+
+
+<h4><a href="/activities/">View ALL Activities</a></h4>
+<h4><a href="/activities-by-tag/">Activities by Tag</a></h4>
+
+<br><br><br>
+
+
+<a href="http://twitter.com/leahawasser" class="author-social" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a>
+
+<a href="https://youtube.com/user/" class="author-social" target="_blank"><i class="fa fa-fw fa-youtube-square"></i> Youtube</a>
+
+
+
+
+<a href="http://github.com/lwasser" class="author-social" target="_blank"><i class="fa fa-github"></i> Github</a>
+
+
+
+
+
+
+
+<br><br><br>
+<h3>Blog.Roll</h3>
+<a href="http://www.r-bloggers.com" target="_blank">R Bloggers</a>
+
+        </div>
+        <p class="byline id="post-meta"><strong>Activity: Installing & Updating Packages in R</strong> was posted in <span class="label" style="background-color:#1abc9c"><a href="/coding-and-informatics/">Coding and Informatics</a></span> with <i class="fa fa-tag"></i>: <a href="/R/">R programming</a>
+       on <time datetime="2014-10-27T14:49:52-06:00">October 27, 2014</time> by Leah A. Wasser - Activity Modified From Data Carpentry and Software Carpentry Content.  <a href="http://localhost:4000/about" title="About NEON EDUCATION">About NEON EDUCATION</a>.</p>
+      </footer>
+
+
+    <!-- /.article-wrap -->
+
+  
+
+  </div>
+  </article>
+</div><!-- /#main -->
+
+
+
+<div class="footer-wrap">
+  <div class="related-articles">
+  <!-- <h4>You might also enjoy <small class="pull-right">(<a href="http://localhost:4000/posts/">View all activities</a>)</small></h4> -->
+<h2><a>Related Content:</a></h2>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div><!-- /.related-articles -->
+  <footer>
+    <span>&copy; 2015 National Ecological Observatory Network (NEON) -- Boulder, Colorado. <a href="http://www.neoninc.org" target=_blank></a>
+We love feedback! Email: lwasser at neoninc.org or tweet @leahawasser .
+
+<p>Powered by <a href="http://jekyllrb.com">Jekyll</a> A huge shot out to creator of the <a href="http://mademistakes.com/minimal-mistakes/">Minimal Mistakes</a> theme.</p></span>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-52746937-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-52746937-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+</body>
+</html>

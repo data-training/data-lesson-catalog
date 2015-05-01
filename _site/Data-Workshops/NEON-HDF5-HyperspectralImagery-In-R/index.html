@@ -1,0 +1,669 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>NEON Working With Hyperspectral Imagery in HDF5 Format (R) &#8211; Work with Data - NEON Education</title>
+<meta name="description" content="This workshop introduces remote sensing hyperspectral imagery. We will review the background of the data, how to open it in R and how to perform basic raster calculations. We will also explore raster data in R.">
+<meta name="keywords" content="Data-Workshops">
+<!-- Twitter Cards -->
+	
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:image" content=
+			
+				"http://localhost:4000/images/hierarchy_folder_purple.png"
+			
+		>
+	
+	<meta name="twitter:title" content="NEON Working With Hyperspectral Imagery in HDF5 Format (R)">
+	<meta name="twitter:description" content="This workshop introduces remote sensing hyperspectral imagery. We will review the background of the data, how to open it in R and how to perform basic raster calculations. We will also explore raster data in R.">
+	<meta name="twitter:creator" content="@leahawasser">
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NEON Working With Hyperspectral Imagery in HDF5 Format (R)">
+<meta property="og:description" content="This workshop introduces remote sensing hyperspectral imagery. We will review the background of the data, how to open it in R and how to perform basic raster calculations. We will also explore raster data in R.">
+<meta property="og:url" content="http://localhost:4000/Data-Workshops/NEON-HDF5-HyperspectralImagery-In-R">
+<meta property="og:site_name" content="Work with Data - NEON Education">
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/Data-Workshops/NEON-HDF5-HyperspectralImagery-In-R">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Work with Data - NEON Education Feed">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|PT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.min.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+
+<link rel="stylesheet" href="http://lwasser.github.io/NEON_HigherEd/assets/highlightjs/styles/default.css">
+<script src="http://lwasser.github.io/NEON_HigherEd/assets/highlightjs/highlight.packR.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://localhost:4000">Work with Data - NEON Education</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				<li><a href="http://localhost:4000/activities/" >All Data Tutorials</a></li>
+		        
+				<li><a href="http://localhost:4000/about/" >About</a></li>
+		        
+				<li><a href="http://localhost:4000/Data-Workshops/" >Data Workshops</a></li>
+		        
+				<li><a href="http://neoninc.org" target="_blank">NEON Website</a></li>
+		        
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+  <div class="image-wrap">
+  <img src=
+    
+      "http://localhost:4000/images/hierarchy_folder_purple.png"
+    
+  alt="NEON Working With Hyperspectral Imagery in HDF5 Format (R) feature image">
+  
+    <span class="image-credit">Photo Credit: <a href="http://www.neoninc.org">The Artistry of Colin Williams, NEON</a></span>
+  
+  </div><!-- /.image-wrap -->
+
+
+
+
+
+
+
+<div id="mainWorkshop" role="main">
+  <div class="article-author-side">
+
+    
+
+	 <img src="http://localhost:4000/images/profilePic_circle.png" class="bio-photo" alt="NEON EDUCATION bio photo"></a>
+
+
+
+<h3>NEON EDUCATION</h3>
+<p>Devoted to open data and open source in science and education.</p>
+
+
+
+<a href="http://twitter.com/leahawasser" class="author-social" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a>
+
+<a href="https://youtube.com/neonbetaedu" class="author-social" target="_blank"><i class="fa fa-fw fa-youtube-square"></i> Youtube</a>
+
+
+
+
+<a href="http://github.com/lwasser" class="author-social" target="_blank"><i class="fa fa-github"></i> Github</a>
+
+
+
+
+
+
+
+
+  </div>
+  <article>
+    <div class="headline-wrap">
+      
+        <h1><a href="http://localhost:4000/Data-Workshops/NEON-HDF5-HyperspectralImagery-In-R" rel="bookmark" title="NEON Working With Hyperspectral Imagery in HDF5 Format (R)">NEON Working With Hyperspectral Imagery in HDF5 Format (R)</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+
+    <div class="article-wrap">
+      <h3 id="a-neon-data-carpentry-workshop">A NEON Data Carpentry Workshop</h3>
+
+<p><strong>Date:</strong> Spring 2015</p>
+
+<p>This workshop will providing hands on experience with working with hyperspectral imagery in hierarchical data formats(HDF5), in R. It will also cover raster data analysis in R.</p>
+
+<div id="objectives">
+
+<h3>Goals / Objectives</h3>
+After completing this workshop, you will:
+<ol>
+<li>Know what the hyperspectral remote sensing data are</li>
+<li>Know How to create and read from HDF5 files containing spatial data in R.</li>
+<li>Know they key attributes of raster data that you need to spatially locate raster data in R.</li>
+</ol>
+
+<h3>Before the Workshop Please</h3>
+<p>Download All Data Here</p>
+
+<a href="##" class="btn btn-success"> Eventual Download Data Link</a>
+
+<p>Install Packages using this script. Package list includes:</p>
+<ul>
+<li>GDAL</li>
+<li>RHDF5 </li>
+</ul>
+
+</div>
+
+<h2 id="schedule">SCHEDULE</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Topic</th>
+      <th>Instructor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2:00</td>
+      <td><a href="/GIS-Spatial-Data/Working-With-Rasters/">Working with Rasters - general overview</a></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>2:30</td>
+      <td><a href="/R/Raster-Data-In-R/" title="What is HDF5">Raster Data in R - the skinny</a></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>3:00</td>
+      <td><a href="/HDF5/About-Hyperspectral-Remote-Sensing-Data/" title="What is HDF5">about Hyperspectral Remote Sensing Data</a></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>4:00</td>
+      <td><a href="HDF5/Imaging-Spectroscopy-HDF5-In-R/" title="What is HDF5">Working with Hyperspectral Remote Sensing Data in R - P1</a></td>
+      <td>??</td>
+    </tr>
+    <tr>
+      <td>4:00</td>
+      <td><a href="/HDF5/Create-Raster-Stack-Spectroscopy-HDF5-In-R/" title="What is HDF5">Raster Stacks in R - Working with Hyperspectral Remote Sensing Data</a></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="setup">Setup</h2>
+
+<p>To participate in the workshop, you will need working copies of the software described below. Please make sure to install everything (or at least to download the installers) before the start of the workshop.</p>
+
+<h1 id="hdfview">HDFView</h1>
+
+<p>Hierarchical Data Format 5 (HDF5) is a file format used to store, package, and simultaneously organize large quantities of related data. Although we will use R to analyze data stored in this format, HDFView is free-ware that allows for quick and easy viewing and editing of these files.</p>
+
+<h1 id="r">R</h1>
+
+<p><a href="http://cran.r-project.org/">R</a> is a programming language that specializes in statistical computing. It is a powerful tool for exploratory data analysis. To interact with R, we recommend, but do not require, <a href="http://www.rstudio.com/">RStudio</a>, an interactive development environment (IDE). </p>
+
+<h2 id="r-packages-to-install">R Packages to Install</h2>
+<p>We will use several packages, including </p>
+
+<ul>
+  <li><a href="http://www.bioconductor.org/packages/release/bioc/vignettes/rhdf5/inst/doc/rhdf5.pdf">rhdf5</a> </li>
+  <li><a href="http://cran.r-project.org/web/packages/rgdal/rgdal.pdf">gdal</a></li>
+  <li>others?? </li>
+</ul>
+
+<p>DOWNLOAD </p>
+
+<ol>
+  <li>The package installation script <a href="https://github.com/NEONdps/neonESA2014/blob/master/packageInstallation.R">here</a>, </li>
+  <li>The <a href="http://trac.osgeo.org/gdal/wiki/DownloadingGdalBinaries">gdal</a> libraries, and </li>
+  <li>The <a href="http://www.hdfgroup.org/HDF5/release/obtain5.html">hdf5</a> libraries. </li>
+</ol>
+
+<h1 id="optional-resources">Optional resources</h1>
+
+<h2 id="qgis">QGIS</h2>
+
+<p><a href="http://www.qgis.org/en/site/forusers/index.html#download" target="_blank">QGIS</a> is a cross-platform Open Source Geographic Information system.</p>
+
+<h2 id="online-lidar-data-viewer-las-viewer">Online LiDAR Data Viewer (las viewer)</h2>
+
+<p><a href="http://plas.io">http://plas.io</a> is a Open Source LiDAR data viewer developed by Martin Isenberg of Las Tools and several of his colleagues.</p>
+
+
+
+
+<!-- The code directly below is required to generate tags and categories at the page bottom-->
+
+
+
+<!-- This code generates the category link at the bottom of the page-->
+
+		
+            
+        
+
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        
+                    
+                
+                
+                    
+                    
+                
+            
+        
+
+<!-- remove the stuff above if the site slows down - this is to populate tags -->
+
+
+      <hr />
+      
+
+	
+</ul>
+</div>
+
+      <footer role="contentinfo">
+        <div class="article-author-bottom">
+          
+
+	 <img src="http://localhost:4000/images/profilePic_circle.png" class="bio-photo" alt="NEON EDUCATION bio photo"></a>
+
+
+
+<h3>NEON EDUCATION</h3>
+<p>Devoted to open data and open source in science and education.</p>
+
+
+<h3>Activities By Topic</h3>
+
+
+  
+    
+      <h5><a href="/lidar">LiDAR  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (4) 
+     </a></h5>
+
+
+  
+    
+  
+    
+      <h5><a href="/R">R programming  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (15) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/data-viz">Data Visualization  
+    
+  
+    
+   
+      (2) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+      <h5><a href="/GIS-Spatial-Data">Spatial Data & GIS  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (3) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/hyperspectral-remote-sensing">Hyperspectral Remote Sensing  
+    
+  
+    
+  
+    
+   
+      (5) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/HDF5">Hierarchical Data Formats (HDF5)  
+    
+  
+    
+  
+    
+  
+    
+   
+      (8) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/Data-Workshops">Data Workshops  
+    
+   
+      (3) 
+     </a></h5>
+ 
+
+
+<h4><a href="/activities/">View ALL Activities</a></h4>
+<h4><a href="/activities-by-tag/">Activities by Tag</a></h4>
+
+<br><br><br>
+
+
+<a href="http://twitter.com/leahawasser" class="author-social" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a>
+
+<a href="https://youtube.com/user/" class="author-social" target="_blank"><i class="fa fa-fw fa-youtube-square"></i> Youtube</a>
+
+
+
+
+<a href="http://github.com/lwasser" class="author-social" target="_blank"><i class="fa fa-github"></i> Github</a>
+
+
+
+
+
+
+
+<br><br><br>
+<h3>Blog.Roll</h3>
+<a href="http://www.r-bloggers.com" target="_blank">R Bloggers</a>
+
+        </div>
+        <p class="byline id="post-meta"><strong>NEON Working With Hyperspectral Imagery in HDF5 Format (R)</strong> was  with <i class="fa fa-tag"></i>: <a href="/Data-Workshops/">Data Workshops</a>
+       on <time datetime="2015-01-15T13:49:52-07:00">January 15, 2015</time> by Leah A. Wasser.  <a href="http://localhost:4000/about" title="About NEON EDUCATION">About NEON EDUCATION</a>.</p>
+      </footer>
+
+
+    <!-- /.article-wrap -->
+
+  
+    <section id="disqus_thread"></section><!-- /#disqus_thread -->
+  
+
+  </div>
+  </article>
+</div><!-- /#main -->
+
+
+
+<div class="footer-wrap">
+  <div class="related-articles">
+  <!-- <h4>You might also enjoy <small class="pull-right">(<a href="http://localhost:4000/posts/">View all activities</a>)</small></h4> -->
+<h2><a>Related Content:Data-Workshops</a></h2>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <ul class="posts">
+        <li><a class="post-link" href="/Data-Workshops/NEON-lidar-Rasters-R">NEON Working With (Lidar Derived) Rasters in R</a></li>
+        </ul>
+    
+
+    
+        <ul class="posts">
+        <li><a class="post-link" href="/Data-Workshops/NEON-HDF5-TimeSeries-In-R">NEON Intro to HDF5 Workshop</a></li>
+        </ul>
+    
+
+    
+        <ul class="posts">
+        <li><a class="post-link" href="/Data-Workshops/NEON-HDF5-HyperspectralImagery-In-R">NEON Working With Hyperspectral Imagery in HDF5 Format (R)</a></li>
+        </ul>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div><!-- /.related-articles -->
+  <footer>
+    <span>&copy; 2015 National Ecological Observatory Network (NEON) -- Boulder, Colorado. <a href="http://www.neoninc.org" target=_blank></a>
+We love feedback! Email: lwasser at neoninc.org or tweet @leahawasser .
+
+<p>Powered by <a href="http://jekyllrb.com">Jekyll</a> A huge shot out to creator of the <a href="http://mademistakes.com/minimal-mistakes/">Minimal Mistakes</a> theme.</p></span>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-52746937-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-52746937-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'neondataskills'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+</body>
+</html>

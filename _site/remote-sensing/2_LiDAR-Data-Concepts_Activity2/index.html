@@ -1,0 +1,784 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>What is a CHM, DSM and DTM? About Gridded, Raster LiDAR Data &#8211; Work with Data - NEON Education</title>
+<meta name="description" content="Understand two common LiDAR data product formats: raster and vector and learn the basics of how a LiDAR data are processed.">
+<meta name="keywords" content="lidar">
+<!-- Twitter Cards -->
+	
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:image" content=
+			
+				"http://localhost:4000/images/lidar_GrandMesa.jpg"
+			
+		>
+	
+	<meta name="twitter:title" content="What is a CHM, DSM and DTM? About Gridded, Raster LiDAR Data">
+	<meta name="twitter:description" content="Understand two common LiDAR data product formats: raster and vector and learn the basics of how a LiDAR data are processed.">
+	<meta name="twitter:creator" content="@leahawasser">
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What is a CHM, DSM and DTM? About Gridded, Raster LiDAR Data">
+<meta property="og:description" content="Understand two common LiDAR data product formats: raster and vector and learn the basics of how a LiDAR data are processed.">
+<meta property="og:url" content="http://localhost:4000/remote-sensing/2_LiDAR-Data-Concepts_Activity2/">
+<meta property="og:site_name" content="Work with Data - NEON Education">
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/remote-sensing/2_LiDAR-Data-Concepts_Activity2/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Work with Data - NEON Education Feed">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|PT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.min.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+
+<link rel="stylesheet" href="/assets/highlightjs/styles/zenburn.css">
+<script src="/assets/highlightjs/highlight.packR.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://localhost:4000">Work with Data - NEON Education</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				<li><a href="http://localhost:4000/activities/" >All Data Tutorials</a></li>
+		        
+				<li><a href="http://localhost:4000/about/" >About</a></li>
+		        
+				<li><a href="http://localhost:4000/Data-Workshops/" >Data Workshops</a></li>
+		        
+				<li><a href="http://neoninc.org" target="_blank">NEON Website</a></li>
+		        
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+  <div class="image-wrap">
+  <img src=
+    
+      "http://localhost:4000/images/lidar_GrandMesa.jpg"
+    
+  alt="What is a CHM, DSM and DTM? About Gridded, Raster LiDAR Data feature image">
+  
+    <span class="image-credit">Photo Credit: <a href="http://www.neoninc.org">LiDAR data collected over Grand Mesa, Colorado - National Ecological Observatory Network (NEON)</a></span>
+  
+  </div><!-- /.image-wrap -->
+
+
+
+
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+
+    
+
+	 <img src="http://localhost:4000/images/profilePic_circle.png" class="bio-photo" alt="NEON EDUCATION bio photo"></a>
+
+
+
+<h3>NEON EDUCATION</h3>
+<p>Devoted to open data and open source in science and education.</p>
+
+
+<h3>Activities By Topic</h3>
+
+
+  
+    
+      <h5><a href="/lidar">LiDAR  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (4) 
+     </a></h5>
+
+
+  
+    
+  
+    
+      <h5><a href="/R">R programming  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (15) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/data-viz">Data Visualization  
+    
+  
+    
+   
+      (2) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+      <h5><a href="/GIS-Spatial-Data">Spatial Data & GIS  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (3) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/hyperspectral-remote-sensing">Hyperspectral Remote Sensing  
+    
+  
+    
+  
+    
+   
+      (5) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/HDF5">Hierarchical Data Formats (HDF5)  
+    
+  
+    
+  
+    
+  
+    
+   
+      (8) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/Data-Workshops">Data Workshops  
+    
+   
+      (3) 
+     </a></h5>
+ 
+
+
+<h4><a href="/activities/">View ALL Activities</a></h4>
+<h4><a href="/activities-by-tag/">Activities by Tag</a></h4>
+
+<br><br><br>
+
+
+<a href="http://twitter.com/leahawasser" class="author-social" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a>
+
+<a href="https://youtube.com/user/" class="author-social" target="_blank"><i class="fa fa-fw fa-youtube-square"></i> Youtube</a>
+
+
+
+
+<a href="http://github.com/lwasser" class="author-social" target="_blank"><i class="fa fa-github"></i> Github</a>
+
+
+
+
+
+
+
+<br><br><br>
+<h3>Blog.Roll</h3>
+<a href="http://www.r-bloggers.com" target="_blank">R Bloggers</a>
+
+
+  </div>
+  <article>
+    <div class="headline-wrap">
+      
+        <h1><a href="http://localhost:4000/remote-sensing/2_LiDAR-Data-Concepts_Activity2/" rel="bookmark" title="What is a CHM, DSM and DTM? About Gridded, Raster LiDAR Data">What is a CHM, DSM and DTM? About Gridded, Raster LiDAR Data</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+
+    <div class="article-wrap">
+      <section id="table-of-contents" class="toc">
+  <header>
+    <h3>Contents</h3>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#lidar-point-clouds----the-basics">LiDAR Point Clouds – The Basics</a></li>
+  <li><a href="#what-to-look-for-in-the-metadata">What To Look for In The Metadata</a></li>
+  <li><a href="#creating-useful-data-products-from-lidar-data">Creating useful data products from LiDAR data</a></li>
+  <li><a href="#creating-a-raster-from-lidar-point-clouds">Creating A Raster From LiDAR Point Clouds</a></li>
+  <li><a href="#use-images-from-the-lidar-data-image-gallery-in-your-presentations--teaching">Use Images From The LiDAR Data Image Gallery In Your Presentations &amp; Teaching!</a></li>
+</ul>
+
+  </div>
+</section>
+<!-- /#table-of-contents -->
+
+<h3 id="three-common-lidar-data-products">Three Common LiDAR Data Products</h3>
+<ul>
+  <li><a href="http://neonhighered.org/3dRasterLidar/DTM.html">Digital Terrain Model</a> - This product represents the ground.</li>
+  <li><a href="http://neonhighered.org/3dRasterLidar/DSM.html">Digital Surface Model</a> - This represents the top of the surface (so imagine draping a sheet over the canopy of a forest).</li>
+  <li><a href="http://neonhighered.org/3dRasterLidar/CHM.html">Canopy Height Model</a> - This represents the elevation of the Earth’s surface - and it sometimes also called a DEM or digital elevation model.</li>
+</ul>
+
+<figure class="third">
+    <a href="http://neonhighered.org/3d/SJER_DSM_3d.html"><img src="/images/lidar/dsm.png" /></a>
+    <a href="http://neonhighered.org/3d/SJER_DTM_3d.html"><img src="/images/lidar/dem.png" /></a>
+    <a href="http://neonhighered.org/3d/SJER_CHM_3d.html" target="_blank"><img src="/images/lidar/chm.png" /></a>
+    
+    <figcaption> 3d models of a: LEFT: lidar derived digital surface model (DSM) , MIDDLE: Digital Elevation Model (DEM) and RIGHT: Canopy Height Model (CHM). Click on the images to view interactive 3d models. </figcaption>
+</figure>
+
+<h2 id="lidar-point-clouds----the-basics">LiDAR Point Clouds – The Basics</h2>
+<p>Each point in a LiDAR dataset has a X, Y, Z value and other attributes. The points may be located anywhere in space are not aligned within any particular grid. <image: lidar="" data="" point="" spacing="">.</image:></p>
+
+<p>LiDAR point clouds are typically available in a .las file format. The .las file format is a compressed format that can better handle the millions of points that are often associated with LiDAR data point clouds.</p>
+
+<h4 id="gridded-or-raster-lidar-data-products">Gridded or Raster LiDAR Data Products</h4>
+<p>LiDAR data products are most often worked within a gridded or raster data format. A raster file is a regular grid of cells, all of which are the same size. A few notes about rasters:  </p>
+
+<ul>
+  <li>Each cell is called a pixel. </li>
+  <li>And each pixel represents an area on the ground. </li>
+  <li>The resolution of the raster represents the area that each pixel represents on the ground. So, for instance if the raster is 1 m resolution, that simple means that each pixel represents a 1 m by 1m area on the ground.</li>
+</ul>
+
+<p>Raster data can have attributes associated with it as well. For instance in a LiDAR derived digital elevation model (DEM), each cell might represent a particular elevation value.  In a LIDAR derived intensity image, each cell represents a LIDAR intensity value.</p>
+
+<h2 id="what-to-look-for-in-the-metadata">What To Look for In The Metadata</h2>
+<p>In short, when you go to download LiDAR data the first question you should ask is what format the data are in. Are you downloading point clouds that you might have to process? Or rasters that are already processed for you. How do you know?
+1. check out the metadata
+2. look at the file format - if you are downloading a .las file, then you are getting points. </p>
+
+<h2 id="creating-useful-data-products-from-lidar-data">Creating useful data products from LiDAR data</h2>
+
+<h3 id="classifying-lidar-point-clouds">Classifying LiDAR point clouds</h3>
+<p>LiDAR data points are vector data. LiDAR point clouds are useful because they tell us something about the heights of objects on the ground. However, how do we know whether a point reflected off of a tree, a bird, a building or the ground? In order to develop products like elevation models and canopy height models, we need to classify individual LiDAR points. We might classify LiDAR points into classes including:
+- Ground
+- Vegetation
+- Buildings
+Lidar Point cloud classification is often already done when you download LiDAR point clouds but just know that it’s not to be taken for granted! Programs such as lastools, fusion and terrascan are often used to perform this classification. Once the points are classified, they can be used to derive various LiDAR data products. </p>
+
+<h3 id="free-point-cloud-viewers-that-open-lidar-point-clouds">Free point cloud viewers that open LiDAR point clouds</h3>
+<ul>
+  <li><a href="http://www.fs.fed.us/eng/rsac/fusion/">Fusion: US Forest Service RSAC</a></li>
+  <li><a href="http://www.danielgm.net/cc/">Cloud compare</a></li>
+  <li><a href="http://plas.io">Plas.io website</a> </li>
+  <li>Others (link to some of the online list of tools)</li>
+</ul>
+
+<h2 id="creating-a-raster-from-lidar-point-clouds">Creating A Raster From LiDAR Point Clouds</h2>
+<p>There are different ways to create a raster from LiDAR point clouds. Let’s look one of the most basic ways to create a raster file points- basic gridding. When you perform a gridding algorithm, you are simply calculating a value, using point data, for each pixels in your raster dataset. To do this:</p>
+
+<ol>
+  <li>To begin, a grid is placed on top of the LiDAR data in space. Each cell in the grid has the same spatial dimensions. These dimensions represent that particular area on the ground. If we want to derive a 1 m resolution raster from the lidar data, we overlay a 1m by 1m grid over the LiDAR data points. </li>
+  <li>Within each 1 m x 1 m cell, we calculate a value to be applied to that cell, using the LiDAR points found within that cell. The simplest method of doing this is to take the max, min or mean height value of all lidar points found within the 1 m cell. If we use this approach, we might have cells in the raster that don’t contains any lidar points. These cells will have a “no data” value if we process our raster in this way. </li>
+</ol>
+
+<h3 id="point-to-raster-methods---interpolation">Point to Raster Methods - Interpolation</h3>
+<p>A different approach is to interpolate the value for each cell. Interpolation considers the values of points outside of the cell in addition to points within the cell to calculate a value. Interpolation is useful because it can provide us with some ability to predict or calculate cell values in areas where there are no data (or no points). And to quantify the error associated with those predictions which is useful to know, if you are doing research. </p>
+
+<figure>
+<img src="http://neondataskills.org/images/gridding.gif" alt="Animation Showing the general process of taking lidar point clouds and converting them to a Raster Format. Credits: Tristan Goulden, National Ecological Observatory Network" />
+<figcaption>Animation Showing the general process of taking lidar point clouds and converting them to a Raster Format. Credits: Tristan Goulden, National Ecological Observatory Network</figcaption>
+</figure>
+
+<h2 id="use-images-from-the-lidar-data-image-gallery-in-your-presentations--teaching">Use Images From The LiDAR Data Image Gallery In Your Presentations &amp; Teaching!</h2>
+
+<iframe width="100%" height="500px" frameborder="0" scrolling="no" src="http://flickrit.com/slideshowholder.php?height=75&amp;size=big&amp;setId=72157648481541867&amp;caption=true&amp;theme=1&amp;thumbnails=1&amp;transition=1&amp;layoutType=responsive&amp;sort=0"></iframe>
+
+
+
+
+
+<!-- The code directly below is required to generate tags and categories at the page bottom-->
+
+
+
+<!-- This code generates the category link at the bottom of the page-->
+
+		
+            
+                
+                    
+                
+            
+                
+            
+            
+                
+            
+        
+
+        
+            
+            
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                    
+                    
+                
+            
+        
+
+<!-- remove the stuff above if the site slows down - this is to populate tags -->
+
+
+      <hr />
+      
+
+	
+</ul>
+</div>
+
+      <footer role="contentinfo">
+        <div class="article-author-bottom">
+          
+
+	 <img src="http://localhost:4000/images/profilePic_circle.png" class="bio-photo" alt="NEON EDUCATION bio photo"></a>
+
+
+
+<h3>NEON EDUCATION</h3>
+<p>Devoted to open data and open source in science and education.</p>
+
+
+<h3>Activities By Topic</h3>
+
+
+  
+    
+      <h5><a href="/lidar">LiDAR  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (4) 
+     </a></h5>
+
+
+  
+    
+  
+    
+      <h5><a href="/R">R programming  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (15) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/data-viz">Data Visualization  
+    
+  
+    
+   
+      (2) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+      <h5><a href="/GIS-Spatial-Data">Spatial Data & GIS  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (3) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/hyperspectral-remote-sensing">Hyperspectral Remote Sensing  
+    
+  
+    
+  
+    
+   
+      (5) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/HDF5">Hierarchical Data Formats (HDF5)  
+    
+  
+    
+  
+    
+  
+    
+   
+      (8) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/Data-Workshops">Data Workshops  
+    
+   
+      (3) 
+     </a></h5>
+ 
+
+
+<h4><a href="/activities/">View ALL Activities</a></h4>
+<h4><a href="/activities-by-tag/">Activities by Tag</a></h4>
+
+<br><br><br>
+
+
+<a href="http://twitter.com/leahawasser" class="author-social" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a>
+
+<a href="https://youtube.com/user/" class="author-social" target="_blank"><i class="fa fa-fw fa-youtube-square"></i> Youtube</a>
+
+
+
+
+<a href="http://github.com/lwasser" class="author-social" target="_blank"><i class="fa fa-github"></i> Github</a>
+
+
+
+
+
+
+
+<br><br><br>
+<h3>Blog.Roll</h3>
+<a href="http://www.r-bloggers.com" target="_blank">R Bloggers</a>
+
+        </div>
+        <p class="byline id="post-meta"><strong>What is a CHM, DSM and DTM? About Gridded, Raster LiDAR Data</strong> was posted in <span class="label" style="background-color:#1abc9c"><a href="/remote-sensing/">Remote Sensing</a></span> with <i class="fa fa-tag"></i>: <a href="/lidar/">LiDAR</a>
+       on <time datetime="2014-07-20T14:49:52-06:00">July 20, 2014</time> by .  <a href="http://localhost:4000/about" title="About NEON EDUCATION">About NEON EDUCATION</a>.</p>
+      </footer>
+
+
+    <!-- /.article-wrap -->
+
+  
+
+  </div>
+  </article>
+</div><!-- /#main -->
+
+
+
+<div class="footer-wrap">
+  <div class="related-articles">
+  <!-- <h4>You might also enjoy <small class="pull-right">(<a href="http://localhost:4000/posts/">View all activities</a>)</small></h4> -->
+<h2><a>Related Content:</a></h2>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div><!-- /.related-articles -->
+  <footer>
+    <span>&copy; 2015 National Ecological Observatory Network (NEON) -- Boulder, Colorado. <a href="http://www.neoninc.org" target=_blank></a>
+We love feedback! Email: lwasser at neoninc.org or tweet @leahawasser .
+
+<p>Powered by <a href="http://jekyllrb.com">Jekyll</a> A huge shot out to creator of the <a href="http://mademistakes.com/minimal-mistakes/">Minimal Mistakes</a> theme.</p></span>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-52746937-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-52746937-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+</body>
+</html>

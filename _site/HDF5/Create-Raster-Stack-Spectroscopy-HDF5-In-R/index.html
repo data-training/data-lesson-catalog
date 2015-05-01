@@ -1,0 +1,1033 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Creating a Raster Stack from Hyperspectral Imagery in HDF5 Format in R &#8211; Work with Data - NEON Education</title>
+<meta name="description" content="Open up and explore hyperspectral imagery in HDF format R. Combine multiple bands to create a raster stack. Use these steps to create various band combinations such as RGB, Color-Infrared and False color images.">
+<meta name="keywords" content="hyperspectral-remote-sensing, R, HDF5">
+<!-- Twitter Cards -->
+	
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:image" content=
+			
+				"http://localhost:4000/images/hierarchy_folder_purple.png"
+			
+		>
+	
+	<meta name="twitter:title" content="Creating a Raster Stack from Hyperspectral Imagery in HDF5 Format in R">
+	<meta name="twitter:description" content="Open up and explore hyperspectral imagery in HDF format R. Combine multiple bands to create a raster stack. Use these steps to create various band combinations such as RGB, Color-Infrared and False color images.">
+	<meta name="twitter:creator" content="@leahawasser">
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Creating a Raster Stack from Hyperspectral Imagery in HDF5 Format in R">
+<meta property="og:description" content="Open up and explore hyperspectral imagery in HDF format R. Combine multiple bands to create a raster stack. Use these steps to create various band combinations such as RGB, Color-Infrared and False color images.">
+<meta property="og:url" content="http://localhost:4000/HDF5/Create-Raster-Stack-Spectroscopy-HDF5-In-R/">
+<meta property="og:site_name" content="Work with Data - NEON Education">
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/HDF5/Create-Raster-Stack-Spectroscopy-HDF5-In-R/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Work with Data - NEON Education Feed">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|PT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.min.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+
+<link rel="stylesheet" href="/assets/highlightjs/styles/zenburn.css">
+<script src="/assets/highlightjs/highlight.packR.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://localhost:4000">Work with Data - NEON Education</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				<li><a href="http://localhost:4000/activities/" >All Data Tutorials</a></li>
+		        
+				<li><a href="http://localhost:4000/about/" >About</a></li>
+		        
+				<li><a href="http://localhost:4000/Data-Workshops/" >Data Workshops</a></li>
+		        
+				<li><a href="http://neoninc.org" target="_blank">NEON Website</a></li>
+		        
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+  <div class="image-wrap">
+  <img src=
+    
+      "http://localhost:4000/images/hierarchy_folder_purple.png"
+    
+  alt="Creating a Raster Stack from Hyperspectral Imagery in HDF5 Format in R feature image">
+  
+    <span class="image-credit">Photo Credit: <a href="http://www.neoninc.org">The Artistry of Colin Williams, NEON</a></span>
+  
+  </div><!-- /.image-wrap -->
+
+
+
+
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+
+    
+
+	 <img src="http://localhost:4000/images/profilePic_circle.png" class="bio-photo" alt="NEON EDUCATION bio photo"></a>
+
+
+
+<h3>NEON EDUCATION</h3>
+<p>Devoted to open data and open source in science and education.</p>
+
+
+<h3>Activities By Topic</h3>
+
+
+  
+    
+      <h5><a href="/lidar">LiDAR  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (4) 
+     </a></h5>
+
+
+  
+    
+  
+    
+      <h5><a href="/R">R programming  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (15) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/data-viz">Data Visualization  
+    
+  
+    
+   
+      (2) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+      <h5><a href="/GIS-Spatial-Data">Spatial Data & GIS  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (3) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/hyperspectral-remote-sensing">Hyperspectral Remote Sensing  
+    
+  
+    
+  
+    
+   
+      (5) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/HDF5">Hierarchical Data Formats (HDF5)  
+    
+  
+    
+  
+    
+  
+    
+   
+      (8) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/Data-Workshops">Data Workshops  
+    
+   
+      (3) 
+     </a></h5>
+ 
+
+
+<h4><a href="/activities/">View ALL Activities</a></h4>
+<h4><a href="/activities-by-tag/">Activities by Tag</a></h4>
+
+<br><br><br>
+
+
+<a href="http://twitter.com/leahawasser" class="author-social" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a>
+
+<a href="https://youtube.com/user/" class="author-social" target="_blank"><i class="fa fa-fw fa-youtube-square"></i> Youtube</a>
+
+
+
+
+<a href="http://github.com/lwasser" class="author-social" target="_blank"><i class="fa fa-github"></i> Github</a>
+
+
+
+
+
+
+
+<br><br><br>
+<h3>Blog.Roll</h3>
+<a href="http://www.r-bloggers.com" target="_blank">R Bloggers</a>
+
+
+  </div>
+  <article>
+    <div class="headline-wrap">
+      
+        <h1><a href="http://localhost:4000/HDF5/Create-Raster-Stack-Spectroscopy-HDF5-In-R/" rel="bookmark" title="Creating a Raster Stack from Hyperspectral Imagery in HDF5 Format in R">Creating a Raster Stack from Hyperspectral Imagery in HDF5 Format in R</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+
+    <div class="article-wrap">
+      <section id="table-of-contents" class="toc">
+  <header>
+    <h3>Contents</h3>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#about">About</a></li>
+  <li><a href="#about-this-activity">About This Activity</a></li>
+  <li><a href="#creating-a-raster-stack-in-r">1. Creating a Raster Stack in R</a></li>
+  <li><a href="#plotting-our-data-on-a-map">2. Plotting our data on a map.</a></li>
+  <li><a href="#raster-math---creating-ndvi-and-other-vegetation-indices-in-r">3. Raster Math - Creating NDVI and other Vegetation Indices in R</a></li>
+  <li><a href="#extra-credit">Extra Credit</a></li>
+</ul>
+
+  </div>
+</section>
+<!-- /#table-of-contents -->
+
+<div id="objectives">
+<strong>R Skill Level:</strong> Intermediate
+
+<h3>Goals / Objectives</h3>
+After completing this activity, you will:
+<ol>
+<li>Extract a "slice" of data from a hyperspectral data cube.</li>
+<li>Create a rasterstack in R which can then be used to create RGB images from bands in a hyperspectral data cube.</li>
+<li>Plot data spatially on a map.</li>
+<li>Create basic vegetation indices like NDVI using raster  based calculations in R.</li>
+</ol>
+
+<h3>What you'll Need</h3>
+<ul>
+<li>R or R studio to write your code.</li>
+<li>The latest version of RHDF5 package for R.</li>
+<li>Recommended Background: Consider reviewing the documentation for the <a href="http://www.bioconductor.org/packages/release/bioc/manuals/rhdf5/man/rhdf5.pdf" target="_blank">RHDF5 libraries</a></li>
+</ul>
+
+
+<h3>Data to Download</h3>
+<a href="http://neonhighered.org/Data/HDF5/SJER_140123_chip.h5" class="btn btn-success"> DOWNLOAD the NEON Imaging Spectrometer Data (HDF5) Format</a>. 
+<p>The data in this HDF5 file were collected over the San Joachim field site located in California (NEON Domain 17) and processed at NEON headquarters. The entire dataset can be accessed <a href="http://neoninc.org/data-resources/get-data/airborne-data" target="_blank">by request from the NEON website.</a>
+</p>  
+
+<h3>Pre-reqs</h3>
+<p>We highly recommend you work through the - Introduction to Working with hyperspectral data in R activity before moving on to this activity.</p>
+</div>
+
+<h2 id="about">About</h2>
+<p>We often want to generate a 3 band image from multi or hyperspectral data. The most commonly recognized band combination is RGB which stands for Red, Green and Blue. RGB images are just like the images that your camera takes. But there are other band combinations that are useful too. For example, near infrared images emphasize vegetation and help us classify or identify where vegetation is located on the ground.</p>
+
+<figure class="third">
+    <a href="/images/hyperspectral/RGBImage_2.png"><img src="/images/hyperspectral/RGBImage_2.png" /></a>
+    <a href="/images/hyperspectral/NIR_G_B.png"><img src="/images/hyperspectral/NIR_G_B.png" /></a>
+    <a href="/images/hyperspectral/falseColor.png"><img src="/images/hyperspectral/falseColor.png" /></a>
+    
+    <figcaption>SJER image using 3 different band combinations. Left: typical red, green and blue (bands 58,34,19), middle: color infrared: near infrared, green and blue (bands 90, 34, 19).</figcaption>
+</figure>
+
+<p class="notice"><i class="fa fa-star"></i> <strong>Data Tip - Band Combinations:</strong> the Biodiversity Informatics group created a great interactive tool that lets you explore band combinations. Check it out:<a href="http://biodiversityinformatics.amnh.org/interactives/bandcombination.php" target="_blank">Learn more about band combinations using a great online tool!</a></p>
+
+<h2 id="about-this-activity">About This Activity</h2>
+<p>In this activity, we will learn how to create multi (3) band images. We will also learn how to perform some basic raster calculations (known as raster math in the GIS world).</p>
+
+<h2 id="creating-a-raster-stack-in-r">1. Creating a Raster Stack in R</h2>
+
+<p>In the <a href="http://neondataskills.org/HDF5/Imaging-Spectroscopy-HDF5-In-R/">previous activity</a>, we exported a subset of the NEON Reflectance data from a HDF5 file. In this activity, we will create a full color image using 3 (red, green and blue - RGB) bands. We will follow many of the steps we followed in the <a href="http://neondataskills.org/HDF5/Imaging-Spectroscopy-HDF5-In-R/">intro to working with hyperspectral data activity</a>. These steps included loading required packages, reading in our file and viewing the file structure.</p>
+
+<pre><code>#Load required packages
+library(raster)
+library(rhdf5)
+#Read in H5 file
+#f &lt;- '/Users/lwasser/Documents/Conferences/1_DataWorkshop_ESA2014/HDF5File/SJER_140123_chip.h5'
+f &lt;- '/Users/law/Documents/data/SJER_140123_chip.h5'
+#View HDF5 file structure 
+h5ls(f,all=T)
+#r get spatial info and map info using the h5readAttributes function developed by Ted Hart
+spinfo &lt;- h5readAttributes(f,"spatialInfo")
+
+#Populate the raster image extent value. 
+#get the map info, split out elements
+mapInfo&lt;-h5read(f,"map info")
+mapInfo&lt;-unlist(strsplit(mapInfo, ","))
+</code></pre>
+
+<p>Next, we’ll write a set of functions that will perform the processing that we did step by step in the <a href="http://neondataskills.org/HDF5/Imaging-Spectroscopy-HDF5-In-R/">intro to working with hyperspectral data activity</a>. This will allow us to process multiple bands in bulk.</p>
+
+<p>The first function <code>getBandMat</code> slices the HDF5 file, extracting the reflectance information for a specified band. It returns a matrix containing that band. To call this function, we would enter <code>getBandMat(fileObject, *BandNumber*)</code>.</p>
+
+<pre><code>#f: the hdf file
+# band: the band you want to process
+# returns: a matrix containing the reflectance data for the specific band
+getBandMat &lt;- function(f, band){
+  	  out&lt;- h5read(f,"Reflectance",index=list(1:477,1:502,band))
+  	  #Convert from array to matrix
+  	  out &lt;- (out[,,1])
+  	  #transpose data to fix flipped row and column order 
+  	  out &lt;-t(out)
+  #assign data ignore values to NA
+  	  out[out &gt; 14999] &lt;- NA
+  	  return(out)
+}
+</code></pre>
+
+<p>The next function, <code>band2rast</code> takes the subsetted band matrix and creates a raster. It also calculates and sets both the raster extent and the CRS (coordinate reference system) for the raster. The call for this function would be <code>band2rast(fileObject, *BandNumber*)</code>.</p>
+
+<pre><code>band2rast &lt;- function(f,band){
+  	  #define the raster including the CRS (taken from SPINFO)
+  out &lt;-  raster(getBandMat(f,band),crs=(spinfo$projdef))
+  #define extents of the data using metadata and matrix attributes
+  xMN=as.numeric(mapInfo[4])
+  xMX=(xMN+(ncol(b34)))
+  yMN=as.numeric(mapInfo[5]) 
+  yMX=(yMN+(nrow(b34)))
+  #set raster extent
+  rasExt &lt;- extent(xMN,xMX,yMN,yMX)
+  #assign extent to raster
+  extent(out) &lt;- rasExt
+  return(out)
+}
+</code></pre>
+
+<p>The last function, <code>stackList</code> creates the final raster stack. A <a href="http://www.inside-r.org/packages/cran/raster/docs/stack" target="_blank">raster stack</a> is a set 1 or more rasters. If it contains multiple rasters, it uses a list which defines which bands (or dimensions in the Reflectance dataset) to grab and process. </p>
+
+<pre><code>## This function creates a stack of rasters from a list of rasters
+stackList &lt;- function(rastList){
+  	  #add first raster to stack.
+  	  masterRaster &lt;- stack(rastList[[1]])
+  	  #add additional layers to raster stack 
+  	  for(i in 2:length(rastList)){
+		masterRaster&lt;-  addLayer(masterRaster,rastList[[i]])
+  	  }
+  	  return(masterRaster)
+}
+</code></pre>
+
+<p>Now that the functions are created, we can create our list of rasters. The list specifies which bands (or dimensions in our hyperspectral dataset) we want to include in our raster stack. Let’s start with a typical RGB (red, green, blue) combination. We will use bands 58, 34, and 19. </p>
+
+<p class="notice"><i class="fa fa-star"></i> <strong>Data Tip - wavelengths and bands:</strong> Remember that you can look at the wavelengths dataset to determine the center wavelength value for each band. </p>
+
+<pre><code>rgb &lt;- list(58,34,19)
+#lapply tells R to apply the function to each element in the list
+rgb_rast &lt;- lapply(rgb,band2rast, f = f)
+#check out the properties or rgb_rast
+#note that it displays properties of 3 rasters.
+rgb_rast
+</code></pre>
+
+<p><a href="http://www.r-bloggers.com/using-apply-sapply-lapply-in-r/" target="_blank">More about Lapply here</a>. </p>
+
+<p>Next, add the names of the bands to the raster so we can easily keep track of the bands in the list.</p>
+
+<pre><code>#add the band numbers as names to each raster in the raster list
+names(rgb_rast) &lt;- as.character(rgb)
+#check properties of the raster list - note the band names
+rgb_rast
+### Plot one raster in the list to make sure things look OK.
+plot(rgb_rast[[1]])
+#create a raster stack from the list
+rgb_stack &lt;- stackList(rgb_rast)
+</code></pre>
+
+<p>Next, let’s add the names of each band to our raster list. Then we can plot the bands</p>
+
+<pre><code>#Add band names to each raster in the stack
+bandNames=paste("Band_",unlist(rgb),sep="")
+for (i in 1:length(rgb_rast) ) {
+  	  names(rgb_stack)[i]=bandNames[i]
+}
+#plot the stack	
+plot(rgb_stack)
+plotRGB(rgb_stack,r=1,g=2,b=3, scale=300, stretch = "Lin")
+</code></pre>
+
+<p>The <code>plotRGB</code> function allows you to combine three bands to create an image. <a href="http://www.inside-r.org/packages/cran/raster/docs/plotRGB" target="_blank">More on plotRGB here.</a></p>
+
+<pre><code>#write out final raster	
+#note - you should be able to bring this tiff into any GIS program!
+
+writeRaster(rgb_stack,file="test6.tif",overwrite=TRUE)
+</code></pre>
+
+<p class="notice"><i class="fa fa-star"></i> <strong>Data Tip - False color and near infrared images:</strong> Use the band combinations listed at the top of this page to modify the raster list. What type of image do you get when you change the band values?</p>
+
+<p>If you want to play around a bit with this – try plotting the RGB image using different bands. Here are some suggestions.</p>
+
+<ul>
+  <li>Color Infrared / False Color: rgb: (90,34,19)</li>
+  <li>SWIR, NIR,Red Band – rgb (152,90,58)</li>
+  <li>False Color: – rgb (363,246,55)</li>
+</ul>
+
+<p>More on Band Combinations: <a href="http://gdsc.nlr.nl/gdsc/en/information/earth_observation/band_combinations">http://gdsc.nlr.nl/gdsc/en/information/earth_observation/band_combinations</a></p>
+
+<p class="notice"><i class="fa fa-star"></i><strong>A note about image stretching:</strong> 
+Notice that the scale is set to 300 on the RGB image that we plotted above. We can adjust this number and notice that the image gets darker - or lighter.</p>
+
+<h2 id="plotting-our-data-on-a-map">2. Plotting our data on a map.</h2>
+<p>We can plot the location of our image on a map of the US. For this we’ll use the lower left coordinates of the raster, extracted from the SPINFO group. Note that these coordinates are in latitude and longitude (geographic coordinates) rather than UTM coordinates.</p>
+
+<pre><code>#Create a Map in R
+library(maps)
+map(database="state",region="california")
+points(spinfo$LL_lat~spinfo$LL_lon,pch = 15)
+#add title to map.
+title(main="NEON Site Location in Southern California")
+</code></pre>
+
+<h2 id="raster-math---creating-ndvi-and-other-vegetation-indices-in-r">3. Raster Math - Creating NDVI and other Vegetation Indices in R</h2>
+<p>In this last part, we will calculate some vegetation indices using raster math in R! We will start by creating NDVI or Normalized Difference Vegetation Index. </p>
+
+<p class="notice"><i class="fa fa-star"></i> <strong>Data Tip - About NDVI:</strong> NDVI is  a ratio between the near infrared (NIR) portion of the electromagnetic spectrum and the red portion of the spectrum. Please keep in mind that there are different ways to aggregate bands when using hyperspectral data. This example is using individual bands to perform the NDVI calculation. Using individual bands is not necessarily the best way to calculate NDVI from hyperspectral data! </p>
+
+<pre><code>#Calculate NDVI
+#select bands to use in calculation (red, NIR)
+ndvi_bands &lt;- c(58,90)
+#create raster list and then a stack using those two bands
+ndvi_rast &lt;- lapply(ndvi_bands,band2rast, f = f)
+ndvi_stack &lt;- stackList(ndvi_rast)
+#calculate NDVI
+NDVI &lt;- function(x) {
+  	  (x[,2]-x[,1])/(x[,2]+x[,1])
+}
+ndvi_calc &lt;- calc(ndvi_stack,NDVI)
+plot(ndvi_calc, main="NDVI for the NEON SJER Field Site")
+</code></pre>
+
+<figure class="half">
+<a href="/images/hyperspectral/NDVI.png"><img src="/images/hyperspectral/NDVI.png" /></a>
+<a href="/images/hyperspectral/EVI.png"><img src="/images/hyperspectral/EVI.png" /></a>
+    
+<figcaption>LEFT: NDVI for the NEON SJER field site, created in R. RIGHT: EVI for the NEON SJER field site created in R.</figcaption>
+</figure>
+
+<h2 id="extra-credit">Extra Credit</h2>
+<p>IF you get done early, try any of the following:</p>
+
+<ol>
+  <li>Calculate EVI using the following formula : EVI&lt;- 2.5 * ((b4-b3) / (b4 + 6 * b3- 7.5*b1 + 1))</li>
+  <li>Calculate NDNI using the following equation: log(1/p1510)-log(1/p1680)/ log(1/p1510)+log(1/p1680)</li>
+  <li>Explore the bands in the hyperspectral data. What happens if you average reflectance values across multiple red and NIR bands and then calculate NDVI?</li>
+</ol>
+
+
+
+
+
+<!-- The code directly below is required to generate tags and categories at the page bottom-->
+
+
+
+<!-- This code generates the category link at the bottom of the page-->
+
+		
+            
+                
+                    
+                
+            
+                
+            
+            
+                
+            
+        
+
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                
+                    
+                    
+                
+            
+                
+                    
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                    
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                    
+                    
+                
+            
+        
+
+<!-- remove the stuff above if the site slows down - this is to populate tags -->
+
+
+      <hr />
+      
+
+<div id="relatedCode">
+<h2>GET RELATED CODE</h2>
+Right Click to download associated code:
+<ul>
+	<li>
+ 	<a href="/code/create_rasterStack_R.R" class="btn btn-info"> create_rasterStack_R.R </a> </li>
+
+	
+</ul>
+</div>
+
+      <footer role="contentinfo">
+        <div class="article-author-bottom">
+          
+
+	 <img src="http://localhost:4000/images/profilePic_circle.png" class="bio-photo" alt="NEON EDUCATION bio photo"></a>
+
+
+
+<h3>NEON EDUCATION</h3>
+<p>Devoted to open data and open source in science and education.</p>
+
+
+<h3>Activities By Topic</h3>
+
+
+  
+    
+      <h5><a href="/lidar">LiDAR  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (4) 
+     </a></h5>
+
+
+  
+    
+  
+    
+      <h5><a href="/R">R programming  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (15) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/data-viz">Data Visualization  
+    
+  
+    
+   
+      (2) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+      <h5><a href="/GIS-Spatial-Data">Spatial Data & GIS  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (3) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/hyperspectral-remote-sensing">Hyperspectral Remote Sensing  
+    
+  
+    
+  
+    
+   
+      (5) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/HDF5">Hierarchical Data Formats (HDF5)  
+    
+  
+    
+  
+    
+  
+    
+   
+      (8) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/Data-Workshops">Data Workshops  
+    
+   
+      (3) 
+     </a></h5>
+ 
+
+
+<h4><a href="/activities/">View ALL Activities</a></h4>
+<h4><a href="/activities-by-tag/">Activities by Tag</a></h4>
+
+<br><br><br>
+
+
+<a href="http://twitter.com/leahawasser" class="author-social" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a>
+
+<a href="https://youtube.com/user/" class="author-social" target="_blank"><i class="fa fa-fw fa-youtube-square"></i> Youtube</a>
+
+
+
+
+<a href="http://github.com/lwasser" class="author-social" target="_blank"><i class="fa fa-github"></i> Github</a>
+
+
+
+
+
+
+
+<br><br><br>
+<h3>Blog.Roll</h3>
+<a href="http://www.r-bloggers.com" target="_blank">R Bloggers</a>
+
+        </div>
+        <p class="byline id="post-meta"><strong>Creating a Raster Stack from Hyperspectral Imagery in HDF5 Format in R</strong> was posted in <span class="label" style="background-color:#1abc9c"><a href="/remote-sensing/">Remote Sensing</a></span> with <i class="fa fa-tags"></i>: <a href="/hyperspectral-remote-sensing/">Hyperspectral Remote Sensing</a>, <a href="/R/">R programming</a>, <a href="/HDF5/">Hierarchical Data Formats (HDF5)</a>
+       on <time datetime="2015-01-13T13:49:52-07:00">January 13, 2015</time> by Edmund Hart, Leah A. Wasser.  <a href="http://localhost:4000/about" title="About NEON EDUCATION">About NEON EDUCATION</a>.</p>
+      </footer>
+
+
+    <!-- /.article-wrap -->
+
+  
+    <section id="disqus_thread"></section><!-- /#disqus_thread -->
+  
+
+  </div>
+  </article>
+</div><!-- /#main -->
+
+
+
+<div class="footer-wrap">
+  <div class="related-articles">
+  <!-- <h4>You might also enjoy <small class="pull-right">(<a href="http://localhost:4000/posts/">View all activities</a>)</small></h4> -->
+<h2><a>Related Content:hyperspectral-remote-sensing</a></h2>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <ul class="posts">
+        <li><a class="post-link" href="/R/Raster-Data-In-R/">Raster Data in R - The Basics</a></li>
+        </ul>
+    
+
+    
+        <ul class="posts">
+        <li><a class="post-link" href="/GIS-Spatial-Data/Working-With-Rasters/">Working With Rasters in R, Python, QGIS and Other Tools</a></li>
+        </ul>
+    
+
+    
+
+    
+
+    
+
+    
+        <ul class="posts">
+        <li><a class="post-link" href="/HDF5/About-Hyperspectral-Remote-Sensing-Data/">About Hyperspectral Remote Sensing Data</a></li>
+        </ul>
+    
+
+    
+        <ul class="posts">
+        <li><a class="post-link" href="/HDF5/Imaging-Spectroscopy-HDF5-In-R/">Intro to Working with Hyperspectral Remote Sensing Data in HDF5 Format in R</a></li>
+        </ul>
+    
+
+    
+        <ul class="posts">
+        <li><a class="post-link" href="/HDF5/Create-Raster-Stack-Spectroscopy-HDF5-In-R/">Creating a Raster Stack from Hyperspectral Imagery in HDF5 Format in R</a></li>
+        </ul>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div><!-- /.related-articles -->
+  <footer>
+    <span>&copy; 2015 National Ecological Observatory Network (NEON) -- Boulder, Colorado. <a href="http://www.neoninc.org" target=_blank></a>
+We love feedback! Email: lwasser at neoninc.org or tweet @leahawasser .
+
+<p>Powered by <a href="http://jekyllrb.com">Jekyll</a> A huge shot out to creator of the <a href="http://mademistakes.com/minimal-mistakes/">Minimal Mistakes</a> theme.</p></span>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-52746937-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-52746937-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'neondataskills'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+</body>
+</html>

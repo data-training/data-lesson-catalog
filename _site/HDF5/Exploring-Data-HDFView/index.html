@@ -1,0 +1,887 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>HDFView: Exploring HDF5 Files in the Free HDFview Tool &#8211; Work with Data - NEON Education</title>
+<meta name="description" content="Explore HDF5 files and the groups and datasets contained within, using the free HDFview tool. See how HDF5 files can be structured and explore metadata. Explore both spatial and temporal data stored in HDF5!">
+<meta name="keywords" content="HDF5">
+<!-- Twitter Cards -->
+	
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:image" content=
+			
+				"http://localhost:4000/images/hierarchy_folder_green.png"
+			
+		>
+	
+	<meta name="twitter:title" content="HDFView: Exploring HDF5 Files in the Free HDFview Tool">
+	<meta name="twitter:description" content="Explore HDF5 files and the groups and datasets contained within, using the free HDFview tool. See how HDF5 files can be structured and explore metadata. Explore both spatial and temporal data stored in HDF5!">
+	<meta name="twitter:creator" content="@leahawasser">
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HDFView: Exploring HDF5 Files in the Free HDFview Tool">
+<meta property="og:description" content="Explore HDF5 files and the groups and datasets contained within, using the free HDFview tool. See how HDF5 files can be structured and explore metadata. Explore both spatial and temporal data stored in HDF5!">
+<meta property="og:url" content="http://localhost:4000/HDF5/Exploring-Data-HDFView">
+<meta property="og:site_name" content="Work with Data - NEON Education">
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/HDF5/Exploring-Data-HDFView">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Work with Data - NEON Education Feed">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|PT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.min.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+
+<link rel="stylesheet" href="/assets/highlightjs/styles/zenburn.css">
+<script src="/assets/highlightjs/highlight.packR.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://localhost:4000">Work with Data - NEON Education</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				<li><a href="http://localhost:4000/activities/" >All Data Tutorials</a></li>
+		        
+				<li><a href="http://localhost:4000/about/" >About</a></li>
+		        
+				<li><a href="http://localhost:4000/Data-Workshops/" >Data Workshops</a></li>
+		        
+				<li><a href="http://neoninc.org" target="_blank">NEON Website</a></li>
+		        
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+  <div class="image-wrap">
+  <img src=
+    
+      "http://localhost:4000/images/hierarchy_folder_green.png"
+    
+  alt="HDFView: Exploring HDF5 Files in the Free HDFview Tool feature image">
+  
+    <span class="image-credit">Photo Credit: <a href="http://www.neoninc.org">Colin Williams</a></span>
+  
+  </div><!-- /.image-wrap -->
+
+
+
+
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+
+    
+
+	 <img src="http://localhost:4000/images/profilePic_circle.png" class="bio-photo" alt="NEON EDUCATION bio photo"></a>
+
+
+
+<h3>NEON EDUCATION</h3>
+<p>Devoted to open data and open source in science and education.</p>
+
+
+<h3>Activities By Topic</h3>
+
+
+  
+    
+      <h5><a href="/lidar">LiDAR  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (4) 
+     </a></h5>
+
+
+  
+    
+  
+    
+      <h5><a href="/R">R programming  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (15) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/data-viz">Data Visualization  
+    
+  
+    
+   
+      (2) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+      <h5><a href="/GIS-Spatial-Data">Spatial Data & GIS  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (3) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/hyperspectral-remote-sensing">Hyperspectral Remote Sensing  
+    
+  
+    
+  
+    
+   
+      (5) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/HDF5">Hierarchical Data Formats (HDF5)  
+    
+  
+    
+  
+    
+  
+    
+   
+      (8) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/Data-Workshops">Data Workshops  
+    
+   
+      (3) 
+     </a></h5>
+ 
+
+
+<h4><a href="/activities/">View ALL Activities</a></h4>
+<h4><a href="/activities-by-tag/">Activities by Tag</a></h4>
+
+<br><br><br>
+
+
+<a href="http://twitter.com/leahawasser" class="author-social" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a>
+
+<a href="https://youtube.com/user/" class="author-social" target="_blank"><i class="fa fa-fw fa-youtube-square"></i> Youtube</a>
+
+
+
+
+<a href="http://github.com/lwasser" class="author-social" target="_blank"><i class="fa fa-github"></i> Github</a>
+
+
+
+
+
+
+
+<br><br><br>
+<h3>Blog.Roll</h3>
+<a href="http://www.r-bloggers.com" target="_blank">R Bloggers</a>
+
+
+  </div>
+  <article>
+    <div class="headline-wrap">
+      
+        <h1><a href="http://localhost:4000/HDF5/Exploring-Data-HDFView" rel="bookmark" title="HDFView: Exploring HDF5 Files in the Free HDFview Tool">HDFView: Exploring HDF5 Files in the Free HDFview Tool</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+
+    <div class="article-wrap">
+      <section id="table-of-contents" class="toc">
+  <header>
+    <h3>Contents</h3>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#review-hierarchical-data-format-5---hdf5">Review: Hierarchical Data Format 5 - HDF5</a></li>
+  <li><a href="#about-this-activity--">About This Activity -</a></li>
+  <li><a href="#part-1-exploring-temperature-data-in-hdf5-format-in-hdfview">Part 1. Exploring Temperature Data in HDF5 Format in HDFView</a></li>
+  <li><a href="#part-2-exploring-hyperspectral-imagery-stored-in-hdf5">Part 2. Exploring Hyperspectral Imagery stored in HDF5</a></li>
+</ul>
+
+  </div>
+</section>
+<!-- /#table-of-contents -->
+
+<div id="objectives">
+<h3>Learning Goals</h3>
+After completing this activity, you will:
+<ol>
+<li>Understand how data can be structured and stored in HDF5.</li>
+<li>Understand how metadata can be added to an HDF5 file, making it "self describing"</li>
+<li>Know how to explore HDF5 files using the free HDF Viewer</li>
+</ol>
+
+<h3>What you'll Need</h3>
+<ul>
+<li>Install the [free HDFview application](http://www.hdfgroup.org/products/java/hdfview/). This application will allow you to explore the contents of an HDF5 file easily. <a href="http://www.hdfgroup.org/products/java/release/download.html" target="_blank">Click HERE to go to the download page. </a></li>
+<li>Data: <a href="/data/NEON_TowerDataD3_D10.hdf5" class="btn">Download the National Ecological Observatory Network (NEON) Flux Tower Temperature data HERE.</a> </li>
+<li>Download the <a href="http://neonhighered.org/Data/HDF5/SJER_140123_chip.h5">NEON Airborne Observation Platform Spectrometer Data HDF5 File.</a> NOTE that this second file has an ".h5" extension while the first has an HDF5 extension. Both extensions represent the HDF5 data type.</li>
+</ul>
+</div>
+
+<h3 id="about-installing-hdfview">About Installing HDFView</h3>
+<p>Select the HDFView download option that matches the operating system and computer setup (32 bit vs 64 bit) that you have. Also <em>don’t</em> click on the “(MDF)” link. Click on the operating system name (ie Windows or Mac for java 1.7).</p>
+
+<figure>
+    <a href="/images/HDF5View_Install.png">
+    <img src="/images/HDF5View_Install.png" /></a>
+    <figcaption>HDFview download options. Click on the operating system name (not the MDF link) to access install files.</figcaption>
+</figure>
+
+<h2 id="review-hierarchical-data-format-5---hdf5">Review: Hierarchical Data Format 5 - HDF5</h2>
+
+<p>We learned previously that the Hierarchical Data Format version 5 (HDF5), is an open file format that supports large, complex, heterogeneous data. Some key points about HDF5:</p>
+
+<ul>
+  <li>HDF5 uses a “file directory” like structure. The HDF5 data models organizes information using <code>Groups</code>. Each group may contain one or more <code>datasets</code>.</li>
+  <li>HDF5 is a self describing file format. This means that the metadata for the data contained within the HDF5 file, are built into the file itself.</li>
+  <li>One HDF5 file may contain several heterogeneous data types (e.g. images, numeric data, data stored as strings) </li>
+</ul>
+
+<h2 id="about-this-activity--">About This Activity -</h2>
+<p>In this activity, we will explore two different types of data, saved in HDF5. This will allow us to better understand how one file can store multiple different types of data, in different ways.</p>
+
+<h1 id="part-1-exploring-temperature-data-in-hdf5-format-in-hdfview">Part 1. Exploring Temperature Data in HDF5 Format in HDFView</h1>
+
+<p>The first thing that we will do is open an HDF5 file in the viewer to get a better idea of how HDF5 files can be structured.</p>
+
+<ul>
+  <li>To begin, open the HDFView application.</li>
+  <li>Within the HDFView application, select File –&gt; Open and navigate to the folder where you saved the fiuTestFile.hdf5 file on your computer. Open this file in HDFView.</li>
+  <li>If you click on the NAME of the HDF5 file in the left hand window of HDFView, you can view metadata for the file (located in the bottom window of the application).</li>
+</ul>
+
+<figure>
+    <a href="/images/HDf5/OpenFIU.png"><img src="/images/HDf5/OpenFIU.png" /></a>
+    <figcaption>If you click on the file name wtihin the viewer, you can view any stored metadata for that file, at the bottom of the viewer. (you may have to click on the metadata tab at the bottom of the viewer)</figcaption>
+</figure>
+
+<ul>
+  <li>Next, explore the structure of this file. Notice that there are two Groups (represented as folder icons in the viewer) called “Domain_03” and “Domain_10”. Within each domain group, there site groups (NEON sites that are located within those domains). Expand these folders by double clicking on the folder icons. Double clicking “expands” the groups content just as you might expand a folder in windows explorer.</li>
+</ul>
+
+<p>Notice that there is metadata associated with each group.</p>
+
+<ul>
+  <li>Double click on the “ORD” group located within the Domain_03 group. Notice in the metadata window that Ord contains data collected from the <a href="http://neoninc.org/science-design/field-sites/ordway-swisher-biological-station" target="_blank">NEON Ordway-Swisher Biological Station Field Site</a>.</li>
+</ul>
+
+<p>Within the Ord group there are two more groups - Min_1 and Min_30. What data are contained within these groups? </p>
+
+<ul>
+  <li>Expand the “min_1” group wtihin the Ord site in Domain_03. Notice that there are 5 more nested groups named “Boom_1, 2, etc”. A boom refers to an arm that contains sensors, at a particular height on the tower. In this case, we are working with data collected using temperature sensors, mounted on the tower booms.</li>
+</ul>
+
+<p class="notice"><i class="fa fa-star"></i> <strong>Note:</strong> The data used in this activity were collected by a temperature sensor mounted on a National Ecological Observatory Network (NEON) “flux tower”. 
+<a href="http://neoninc.org/science-design/collection-methods/flux-tower-measurements" target="_blank">Read more about NEON towers, here. </a></p>
+
+<figure>
+    <a href="/images/NEONtower.png"><img src="/images/NEONtower.png" /></a>
+    <figcaption>A NEON tower contains booms or arms that house sensors at varying heights along the tower.</figcaption>
+</figure>
+
+<p>Speaking of temperature - what type of sensor is collected the data within the boom_1 folder at the Ordway Swisher site? <em>HINT: check the metadata for that dataset.</em></p>
+
+<ul>
+  <li>Expand the “Boom_1” folder by double clicking it. Finally, we have arrived at a dataset! Have a look at the metadata associated with the temperature dataset within the boom_1 group. Notice that there is metadata describing each attribute in the temperature dataset. </li>
+  <li>Double click on the group name to open up the table in a tabular format. Notice that these data are temporal.</li>
+</ul>
+
+<p>So this is one example of how an hdf5 file could be structured. This particular file contains data from multiple sites, collected from different sensors (from different booms on the tower) and collected over time. Take some time to explore this HDF5 dataset within the HDF viewer. </p>
+
+<p>Next, we will look at a spatial data stored in HDF5 format.</p>
+
+<h1 id="part-2-exploring-hyperspectral-imagery-stored-in-hdf5">Part 2. Exploring Hyperspectral Imagery stored in HDF5</h1>
+
+<figure>
+    <a href="/images/aop_0.jpg"><img src="/images/aop_0.jpg" /></a>
+    <figcaption>NEON airborne observation platform.</figcaption>
+</figure>
+
+<p>Next, we will explore a hyperspectral dataset, collected by the <a href="http://neoninc.org/science-design/collection-methods/airborne-remote-sensing">NEON Airborne Observation Platform (AOP)</a> and saved in HDF5 format. Hyperspectral data are naturally hierarchical as each pixel in the data set contains reflectance values for hundreds of bands collected by the sensor. The NEON sensor (imaging spectrometer) collected data within 428 bands.</p>
+
+<p>A few notes about hyperspectral imagery:</p>
+
+<ul>
+  <li>An imaging spectrometer, which collects hyperspectral imagery, records light energy reflected off objects on the earth’s surface.</li>
+  <li>The data are inherently spatial. Each “pixel” in the image is located spatially and represents an area of ground on the earth.</li>
+  <li>Similar to an R,G,B camera, an imaging spectrometer records  </li>
+  <li>Each pixel will contain several hundred bands worth of reflectance data.</li>
+</ul>
+
+<figure>
+    <a href="/images/LandsatVsHyper-01.png">
+    <img src="/images/LandsatVsHyper-01.png" /></a>
+    <figcaption>A hyperspectral instruments records reflected light energy across very narrow bands. The NEON Imaging Spectrometer collects 428 bands of information for each pixel on the ground.</figcaption>
+</figure>
+
+<p>Read more about hyperspectral data:</p>
+
+<ul>
+  <li><a href="http://www.geos.ed.ac.uk/abs/research/micromet/Current/airborne/knowledge_exhange/john_ferguson_imaging.pdf" target="_blank">Presentation by Dr John Ferguson</a></li>
+  <li><a href="http://spacejournal.ohio.edu/pdf/shippert.pdf" target="_blank">White paper by Dr Peg Shippert</a></li>
+  <li><a href="http://www.asprs.org/a/publications/pers/2004journal/april/highlight.pdf" target="_blank">ASPRS Explanation of Hyperspectral Remote Sensing</a></li>
+</ul>
+
+<p>Let’s open some hyperspectral imagery stored in HDF5 format to see what the file structure can like for a different type of data.</p>
+
+<ul>
+  <li>
+    <p>Open the file. Notice that it is structured differently. This file is composed of 3 datasets: Reflectance, fwhm, and wavelength. It also contains some text information called “map info”. Finally it contains a group called spatial info.</p>
+  </li>
+  <li>Let’s first look at the metadata stored in the spatialinfo group. This group contains all of the spatial information that a GIS program would need to project the data spatially.</li>
+  <li>Next double click on the wavelength dataset. Note that this dataset contains the central wavelength value for each band in the dataset. </li>
+  <li>Finally, click on the reflectance dataset. Note that in the metadata for the dataset that the structure of the dataset is 426 x 501 x 477 (wavelength, line, sample). </li>
+  <li>Right click on the reflectance dataset and select <code>open as</code>.</li>
+  <li>Click Image in the “display as” settings on the left hand side of the popup. </li>
+  <li>In this case, the image data are in the second and third dimensions of this dataset. however, HDFview will default to selecting the first and second dimensions. Let’s fix that. 
+    <ul>
+      <li>Under height, make sure dim 1 is selected.</li>
+      <li>Under width, make sure dim 3 is selected.  </li>
+      <li>Notice an image preview appears on the left of the pop-up window.</li>
+    </ul>
+  </li>
+  <li>Hit OK to open the image. You may have to play with the brightness and contrast settings in the viewer to see the data properly. </li>
+</ul>
+
+<p>Explore the spectral dataset in the HDFviewer taking note of the metadata and data stored within the file.</p>
+
+<p>The end!!  </p>
+
+
+
+
+<!-- The code directly below is required to generate tags and categories at the page bottom-->
+
+
+
+<!-- This code generates the category link at the bottom of the page-->
+
+		
+            
+                
+            
+                
+                    
+                
+            
+            
+                
+            
+        
+
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                    
+                    
+                
+            
+        
+
+<!-- remove the stuff above if the site slows down - this is to populate tags -->
+
+
+      <hr />
+      
+
+	
+</ul>
+</div>
+
+      <footer role="contentinfo">
+        <div class="article-author-bottom">
+          
+
+	 <img src="http://localhost:4000/images/profilePic_circle.png" class="bio-photo" alt="NEON EDUCATION bio photo"></a>
+
+
+
+<h3>NEON EDUCATION</h3>
+<p>Devoted to open data and open source in science and education.</p>
+
+
+<h3>Activities By Topic</h3>
+
+
+  
+    
+      <h5><a href="/lidar">LiDAR  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (4) 
+     </a></h5>
+
+
+  
+    
+  
+    
+      <h5><a href="/R">R programming  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (15) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/data-viz">Data Visualization  
+    
+  
+    
+   
+      (2) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+      <h5><a href="/GIS-Spatial-Data">Spatial Data & GIS  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+   
+      (3) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/hyperspectral-remote-sensing">Hyperspectral Remote Sensing  
+    
+  
+    
+  
+    
+   
+      (5) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/HDF5">Hierarchical Data Formats (HDF5)  
+    
+  
+    
+  
+    
+  
+    
+   
+      (8) 
+     </a></h5>
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <h5><a href="/Data-Workshops">Data Workshops  
+    
+   
+      (3) 
+     </a></h5>
+ 
+
+
+<h4><a href="/activities/">View ALL Activities</a></h4>
+<h4><a href="/activities-by-tag/">Activities by Tag</a></h4>
+
+<br><br><br>
+
+
+<a href="http://twitter.com/leahawasser" class="author-social" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a>
+
+<a href="https://youtube.com/user/" class="author-social" target="_blank"><i class="fa fa-fw fa-youtube-square"></i> Youtube</a>
+
+
+
+
+<a href="http://github.com/lwasser" class="author-social" target="_blank"><i class="fa fa-github"></i> Github</a>
+
+
+
+
+
+
+
+<br><br><br>
+<h3>Blog.Roll</h3>
+<a href="http://www.r-bloggers.com" target="_blank">R Bloggers</a>
+
+        </div>
+        <p class="byline id="post-meta"><strong>HDFView: Exploring HDF5 Files in the Free HDFview Tool</strong> was posted in <span class="label" style="background-color:#1abc9c"><a href="/coding-and-informatics/">Coding and Informatics</a></span> with <i class="fa fa-tag"></i>: <a href="/HDF5/">Hierarchical Data Formats (HDF5)</a>
+       on <time datetime="2015-01-30T13:49:52-07:00">January 30, 2015</time> by Leah A. Wasser.  <a href="http://localhost:4000/about" title="About NEON EDUCATION">About NEON EDUCATION</a>.</p>
+      </footer>
+
+
+    <!-- /.article-wrap -->
+
+  
+
+  </div>
+  </article>
+</div><!-- /#main -->
+
+
+
+<div class="footer-wrap">
+  <div class="related-articles">
+  <!-- <h4>You might also enjoy <small class="pull-right">(<a href="http://localhost:4000/posts/">View all activities</a>)</small></h4> -->
+<h2><a>Related Content:HDF5</a></h2>
+
+    
+        <ul class="posts">
+        <li><a class="post-link" href="/R-Python/Cheatsheets/">Cheat sheets for R and Python, At Your Service.</a></li>
+        </ul>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <ul class="posts">
+        <li><a class="post-link" href="/HDF5/About">About: Hierarchical Data Formats - What is HDF5?</a></li>
+        </ul>
+    
+
+    
+        <ul class="posts">
+        <li><a class="post-link" href="/HDF5/Exploring-Data-HDFView">HDFView: Exploring HDF5 Files in the Free HDFview Tool</a></li>
+        </ul>
+    
+
+    
+        <ul class="posts">
+        <li><a class="post-link" href="/HDF5/Create-HDF5-In-R/">R: Creating HDF5 Files in the R</a></li>
+        </ul>
+    
+
+    
+        <ul class="posts">
+        <li><a class="post-link" href="/HDF5/Explore-HDF5-Using-R/">Working With Temperature Data Collected for Multiple Sites and Stored in  HDF5 Format in R</a></li>
+        </ul>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <ul class="posts">
+        <li><a class="post-link" href="/HDF5/About-Hyperspectral-Remote-Sensing-Data/">About Hyperspectral Remote Sensing Data</a></li>
+        </ul>
+    
+
+    
+        <ul class="posts">
+        <li><a class="post-link" href="/HDF5/Imaging-Spectroscopy-HDF5-In-R/">Intro to Working with Hyperspectral Remote Sensing Data in HDF5 Format in R</a></li>
+        </ul>
+    
+
+    
+        <ul class="posts">
+        <li><a class="post-link" href="/HDF5/Create-Raster-Stack-Spectroscopy-HDF5-In-R/">Creating a Raster Stack from Hyperspectral Imagery in HDF5 Format in R</a></li>
+        </ul>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div><!-- /.related-articles -->
+  <footer>
+    <span>&copy; 2015 National Ecological Observatory Network (NEON) -- Boulder, Colorado. <a href="http://www.neoninc.org" target=_blank></a>
+We love feedback! Email: lwasser at neoninc.org or tweet @leahawasser .
+
+<p>Powered by <a href="http://jekyllrb.com">Jekyll</a> A huge shot out to creator of the <a href="http://mademistakes.com/minimal-mistakes/">Minimal Mistakes</a> theme.</p></span>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-52746937-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-52746937-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+</body>
+</html>

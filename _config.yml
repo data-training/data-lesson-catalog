@@ -3,21 +3,21 @@ description: 	A test development site that will host education materials that su
 #Comment out url when working locally to resolve base urls correctly ok
 #use this when pushing to git for live version
 
-url:       http://neondataskills.org
-baseurl:	http://neondataskills.org
+url:       http://lwasser.github.io/Data-Lessons-Org/
+baseurl:	http://lwasser.github.io/Data-Lessons-Org/
 
 #use this when working locally
 #just uncomment the first localhost.
 #url: http://localhost:4000
 #baseurl: http://localhost:4000
 
-disqus_shortname: neondataskills
+disqus_shortname: DataLessons
 
 # Social networking links are used in author-bio sidebar. Update and remove as you like.
 
 # Owner/author information
 owner: 		
-  name: NEON EDUCATION
+  name: Central Lesson Catalog
   avatar: profilePic_circle.png
   bio: "Devoted to open data and open source in science and education."
   email: "lwasser@neoninc.org"

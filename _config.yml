@@ -3,8 +3,8 @@ description: 	A test development site that will host a catalog of data lessons s
 #Comment out url when working locally to resolve base urls correctly ok
 #use this when pushing to git for live version
 
-url:       http://lwasser.github.io/data-lesson-catalog/
-baseurl:	http://lwasser.github.io/data-lesson-catalog/
+url:       http://lwasser.github.io/data-lesson-catalog
+baseurl:	http://lwasser.github.io/data-lesson-catalog
 
 #use this when working locally
 #just uncomment the first localhost.
@@ -51,9 +51,6 @@ links:
   - title: R & Python Cheatsheets
     url: /cheatsheets/
     
-  - title: NEON Website
-    url: http://neoninc.org
-    external: true
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone:    America/Denver

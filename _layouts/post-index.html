@@ -61,6 +61,9 @@
                 {% if post.estimatedTime %}Time: {{ post.estimatedTime }}{% endif %}
                 {% if post.packagesLibraries %}, Related: {{ post.packagesLibraries }},{% endif %}
 	</span>
+	{% if post.level %}, Level: {{ post.level }},{% endif %}
+	{% if post.type %}, Lesson Type: {{ post.type }},{% endif %}
+
     <p>{% if post.description %}{{ post.description }}{% else %}{{ post.content | strip_html | strip_newlines | truncate: 120 }}{% endif %}</p>
   </article>         
    <!-- <span class="date">{{ post.date | date: "%B %-d, %Y"  }}</span> -->

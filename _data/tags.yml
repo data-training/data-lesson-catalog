@@ -1,8 +1,8 @@
 - slug: lidar
   name: LiDAR
   
-- slug: R
-  name: R programming
+- slug: Data-Management-Processing
+  name: Data Management and Processing
   
 - slug: GIS-Spatial-Data
   name: Spatial Data & GIS

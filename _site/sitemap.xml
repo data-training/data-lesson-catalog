@@ -10,15 +10,15 @@
     </url>
     
     <url>
+        <loc>http://localhost:4000/data-management-processing/</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/Data-Workshops/</loc>
     </url>
     
     <url>
         <loc>http://localhost:4000/HDF5/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/R/</loc>
     </url>
     
     <url>
@@ -34,7 +34,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/coding-and-informatics/</loc>
+        <loc>http://localhost:4000/data-lessons/</loc>
     </url>
     
     <url>
@@ -50,7 +50,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/cheatSheets/index.html</loc>
+        <loc>http://localhost:4000/cheatsheets/</loc>
     </url>
     
     <url>
@@ -92,119 +92,19 @@
 
     
     <url>
-        <loc>http://localhost:4000/R-Python/Cheatsheets/</loc>
+        <loc>http://localhost:4000/cheatsheets/lesson-one</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/cheatsheet/R-Python-Matlab</loc>
+        <loc>http://localhost:4000/cheatsheets/lesson-one</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/cheatsheet/About</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/cheatsheet/About</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/cheatsheet/About</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/cheatsheet/R-Data-Wrangling-Cheatsheet</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/cheatsheet/R-Figures</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/HDF5/About</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/HDF5/Exploring-Data-HDFView</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/HDF5/Create-HDF5-In-R/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/HDF5/Explore-HDF5-Using-R/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/R/Raster-Data-In-R/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/GIS-Spatial-Data/Working-With-Rasters/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/Data-Workshops/NEON-lidar-Rasters-R</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/Data-Workshops/NEON-HDF5-TimeSeries-In-R</loc>
+        <loc>http://localhost:4000/DataManagement/Why-Data-Management</loc>
     </url>
     
     <url>
         <loc>http://localhost:4000/Data-Workshops/NEON-HDF5-HyperspectralImagery-In-R</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/HDF5/About-Hyperspectral-Remote-Sensing-Data/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/HDF5/Imaging-Spectroscopy-HDF5-In-R/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/HDF5/Create-Raster-Stack-Spectroscopy-HDF5-In-R/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/working-with-field-data/Field-Data-Polygons-From-Centroids</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/R/Plotly/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/GIS/ArcGISOnline/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/R-Programming/Getting-Started-With-R/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/Using-R/Working-With-Functions</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/R/Packages-In-R/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/remote-sensing/1_About-LiDAR-Data-Light-Detection-and-Ranging_Activity1/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/remote-sensing/2_LiDAR-Data-Concepts_Activity2/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/remote-sensing/2_Lidar-Point-Cloud-Online-Data-Viz-Activity/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/using-lidar-data/1_lidar_derived-data-products/</loc>
     </url>
     
 </urlset>

@@ -1,8 +1,8 @@
 ---
 layout: post_by_tag
-title: 'Articles by tag: R'
-tag: Data-Management-Processing
-permalink: Data-Management-Processing/
+title: 'Articles by tag: Data Management Processing'
+tag: data-management-processing
+permalink: data-management-processing/
 image:
   feature: RBanner.png
   credit: Data-Management-Processing

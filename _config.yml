@@ -3,12 +3,12 @@ description: 	A test development site that will host a catalog of data lessons s
 #Comment out url when working locally to resolve base urls correctly ok
 #use this when pushing to git for live version
 
-url:       http://lwasser.github.io/data-lesson-catalog
-baseurl:	http://lwasser.github.io/data-lesson-catalog
+#url:       http://lwasser.github.io/data-lesson-catalog
+#baseurl:	http://lwasser.github.io/data-lesson-catalog
 
 #use this when working locally
 #just uncomment the first localhost.
-#url: http://localhost:4000
+url: http://localhost:4000
 #baseurl: http://localhost:4000
 
 disqus_shortname: datalessoncatalog
@@ -48,8 +48,8 @@ links:
   - title: Data Workshops
     url: /Data-Workshops/
     
-  - title: R & Python Cheatsheets
-    url: /cheatsheets/
+  - title: Data Lessons
+    url: /data-lessons/
     
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones

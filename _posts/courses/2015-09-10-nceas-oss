@@ -1,3 +1,4 @@
+---
 layout: post
 catalog-entry-type: course
 title: Open Science for Synthesis (OSS)
@@ -27,3 +28,4 @@ comments: TRUE
 event-coordinates: [34.4258, -119.7142]
 event-location: Santa Barbara, California
 pre-req: ["Basic statistics", "Science background"]
+---

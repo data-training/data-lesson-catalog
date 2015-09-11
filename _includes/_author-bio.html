@@ -12,6 +12,18 @@
 <p>{{ site.owner.bio }}</p>
 
 
+<h3>Activities By topic tag</h3>
+{% for topic-tag in site.topic-tags %}
+{% assign t = topic-tag | first %}
+  {% for atag in site.data.topic-tags %}
+    {% if atag.slug == t %}
+      <h5><a href="{{ site.baseurl }}/{{ atag.slug }}">{{ atag.name }}  
+    {% endif %}
+  {% endfor %} 
+      ({{ tag | last | size }}) 
+     </a></h5>
+{% endfor %} 
+
 <h3>Activities By Topic</h3>
 {% for tag in site.tags %}
 {% assign t = tag | first %}
@@ -23,6 +35,9 @@
       ({{ tag | last | size }}) 
      </a></h5>
 {% endfor %} 
+
+
+topic-tag
 
 
 <h4><a href="{{ site.baseurl }}/activities/">View ALL Activities</a></h4>

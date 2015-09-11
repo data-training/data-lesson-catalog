@@ -1,5 +1,4 @@
-### Example YAML classification of a catalog entry
-
+---
 layout: post
 catalog-entry-type: lesson               ---> from controlled vocab: lesson, data, unit, workshop, course, program, event
 title: Lesson 01: Why Data Management
@@ -31,8 +30,11 @@ comments: TRUE  ----> If this is set to TRUE, discus commenting is turned on - p
 event-coordinates:                 <---------- this would be geocoordinates of specific events
 event-location:                       <---------- this would be a place name of specific events (e.g., Santa Barbara, California)   do we want
 pre-req:
-
+---
 
 ###Naming Conventions
 
 Date-OrgNameAbbreviation-Topic
+
+###STUFF TO DELETE
+Please delete the "<---- " sections of the template above - its' just there to help you understand what to write"

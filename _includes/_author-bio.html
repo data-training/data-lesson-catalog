@@ -13,8 +13,15 @@
 
 
 <h3>Data Activities By Topic Tag</h3>
+{% for topic-tag in site.topic-tags %}
+{% assign t = tag | first %}
+
 {% for atag in site.data.topic-tags %}
+{% if atag.slug == t %}
   <h5><a href="{{ site.baseurl }}/{{ atag.slug }}">{{ atag.name }}</h5>
+{% endif %}
+{% endfor %} 
+      ({{ tag | last | size }}) 
 {% endfor %} 
 
 <h3>Activities By Topic</h3>

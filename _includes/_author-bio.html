@@ -12,9 +12,9 @@
 <p>{{ site.owner.bio }}</p>
 
 
-<h3>Activities By topic tag</h3>
+<h3>Data Activities By Topic Tag</h3>
 {% for atag in site.data.topic-tags %}
-  {{ atag.name }}
+  <h5><a href="{{ site.baseurl }}/{{ atag.slug }}">{{ atag.name }}</h5>
 {% endfor %} 
 
 <h3>Activities By Topic</h3>

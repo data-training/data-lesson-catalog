@@ -11,9 +11,18 @@
 <h3>{{ site.owner.name }}</h3>
 <p>{{ site.owner.bio }}</p>
 
+Here is a list of topic tags:
+I want it to count the posts that are "tagged" with each topic-tag.
+{% for member in site.data.topic-tags %}
+  <h5>{{ member.slug }}</h5>
+{% endfor %}
+
+
 
 <h3>Data Activities By Topic Tag</h3>
-{% for topic-tag in site.topic-tags %}
+{% for tag in site.topic-tag %}
+{{ tag }}
+This is it!
 {% assign t = tag | first %}
 
 {% for atag in site.data.topic-tags %}
@@ -23,6 +32,8 @@
 {% endfor %} 
       ({{ tag | last | size }}) 
 {% endfor %} 
+
+
 
 <h3>Activities By Topic</h3>
 {% for tag in site.tags %}

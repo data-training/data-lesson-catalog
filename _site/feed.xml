@@ -4,13 +4,30 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2015-09-10T17:40:25-06:00</updated>
+<updated>2015-09-11T10:12:11-06:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Data Lesson Catalog</name>
   <uri>http://localhost:4000/</uri>
   <email>datalessons@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Data Carpentry R for Ecology]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/test" />
+  <id>http://localhost:4000/dc-R</id>
+  <published>2015-09-10T00:00:00-06:00</published>
+  <updated>2015-09-10T00:00:00-06:00</updated>
+  <author>
+    <name>Data Lesson Catalog</name>
+    <uri>http://localhost:4000</uri>
+    <email>datalessons@gmail.com</email>
+  </author>
+  <content type="html">
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/test&quot;&gt;Data Carpentry R for Ecology&lt;/a&gt; was originally published by Data Lesson Catalog at &lt;a href=&quot;http://localhost:4000&quot;&gt;Data Lesson Catalog&lt;/a&gt; on September 10, 2015.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>

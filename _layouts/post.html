@@ -37,10 +37,49 @@
     </div><!--/ .headline-wrap -->
 
     <div class="article-wrap">
+    
+<!-- Begin Page Content  -->
+    
+    
       <h4>Authors: {{ page.authors }}</h4>
-      <p>{{ page.description }}</p>
+      
+      <p>Entry Type: {{ page.catalog-entry-type }}</p>
+      <p>Organization: {{ page.organization }}</p>
+      <p>Identifier: {{ page.identifier }}</p>
+      <p>License Name: {{ page.license-name }}</p>
+      <p>Target Audience: {{ page.target-audience }}</p>
+      <p>Delivery Mode: {{ page.delivery-mode }}</p>
+      <p>Year Published: {{ page.date-published }}</p>
+      <p>Citation: {{ page.citation }}</p>
+      <p>Topic Tag: {{ page.topic-tag }}</p>
+      <p>Learning Type Tag: {{ page.learning-type-tag }}</p>
+      <p>assessment-tag: {{ page.assessment-tag }}</p>
+      <p>content-tag: {{ page.content-tag }}</p>
+      <p>incentive-tag: {{ page.citation }}</p>
+      <p>Format Tag: {{ page.format-tag }}</p>
+      <p>discrete Skills Tag: {{ page.discrete-skills-tag }}</p>
+      <p>software language tag: {{ page.software-language-tag }}</p>
+      <p>discrete Skills Tag: {{ page.discrete-skills-tag }}</p>
+      <p>Time: {{ page.time }}</p>
+      <p>Related Libraries: {{ page.related-libraries }}</p>
+      <p>source- url: {{ page.source-url }}</p>
+      
+      <p>Event Coordinates: {{ page.event-coordinates }}</p>
+      <p>Page Location: {{ page.location }}</p>
+      <p>Pre Req : {{ page.pre-req }}</p>
+     
+     
+      <p>Description: {{ page.description }}</p>
+      
+      
       {{ content }}
+
+<!-- End Page Content  -->
+
+
 <br>
+
+
 <!-- LikeBtn.com BEGIN -->
 <span class="likebtn-wrapper"></span>
 <script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>

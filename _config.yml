@@ -1,5 +1,5 @@
 title:  Data Lesson Catalog
-description: 	A test development site that will host a catalog of data lessons submitted by the community.
+description: A test development site that will host a catalog of data lessons submitted by the community.
 #Comment out url when working locally to resolve base urls correctly ok
 #use this when pushing to git for live version
 
@@ -51,7 +51,9 @@ links:
     
   - title: Data Lessons
     url: /data-lessons/
-
+    
+  - title: Submit A Lesson, Course or Workshop
+    url: /submit/
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone:    America/Denver

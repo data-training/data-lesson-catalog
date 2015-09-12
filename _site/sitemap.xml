@@ -22,10 +22,6 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/topic-tag/data-analysis/</loc>
-    </url>
-    
-    <url>
         <loc>http://localhost:4000/topic-tag/collaboration-synthesis/</loc>
     </url>
     
@@ -35,10 +31,6 @@
     
     <url>
         <loc>http://localhost:4000/course/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/data-analysis/</loc>
     </url>
     
     <url>
@@ -62,11 +54,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/activities-by-tag/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/activities/</loc>
+        <loc>http://localhost:4000/submit/</loc>
     </url>
     
     <url>

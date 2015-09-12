@@ -11,44 +11,60 @@
 <h3>{{ site.owner.name }}</h3>
 <p>{{ site.owner.bio }}</p>
 
-Here is a list of topic tags:
-I want it to count the posts that are "tagged" with each topic-tag.
+
+<!-- NOTE: Jekyll contains the category and tag elements built in making it easier to 
+count by post tag or category. For custom variables, i implemented a counter. This is ok
+becuase the site is built on the backend so it should not affect the front-end user experience. -->
+
+<h3>Data Topic Covered</h3>
+
 {% for member in site.data.topic-tags %}
-  <h5>{{ member.slug }}</h5>
+{% assign counter = 0 %}
+<!-- this code counts the number of posts associated with the member -->
+{% for post in site.posts %}
+	{% if post.topic-tag contains member.slug %}
+	{% assign counter = counter | plus: 1 %}
+	{% endif %}
+{% endfor %}	
+  <h5><a href="{{ site.baseurl }}/topic-tag/{{ member.slug }}">{{ member.name }} ({{ counter }})</h5>
+  	
+
 {% endfor %}
 
 
 
-<h3>Data Activities By Topic Tag</h3>
-{% for tag in site.topic-tag %}
-{{ tag }}
-This is it!
-{% assign t = tag | first %}
-
-{% for atag in site.data.topic-tags %}
-{% if atag.slug == t %}
-  <h5><a href="{{ site.baseurl }}/{{ atag.slug }}">{{ atag.name }}</h5>
-{% endif %}
-{% endfor %} 
-      ({{ tag | last | size }}) 
-{% endfor %} 
-
-
-
+<!--
 <h3>Activities By Topic</h3>
+
 {% for tag in site.tags %}
-{% assign t = tag | first %}
-  {% for atag in site.data.tags %}
-    {% if atag.slug == t %}
-      <h5><a href="{{ site.baseurl }}/{{ atag.slug }}">{{ atag.name }}  
-    {% endif %}
-  {% endfor %} 
+	{% assign t = tag | first %}
+  		{% for atag in site.data.tags %}
+    		{% if atag.slug == t %}
+      		<h5><a href="{{ site.baseurl }}/{{ atag.slug }}">{{ atag.name }}  
+    		{% endif %}
+  		{% endfor %} 
       ({{ tag | last | size }}) 
      </a></h5>
 {% endfor %} 
 
 
-topic-tag
+
+<h3>Activities By Category</h3>
+
+{% for category in site.categories %}
+{% assign t = category | first %}
+  {% for atag in site.data.categories %}
+    {% if atag.slug == t %}
+      <h5><a href="{{ site.baseurl }}/{{ atag.slug }}">{{ atag.name }}  
+    {% endif %}
+  {% endfor %} 
+      ({{ category | last | size }}) 
+     </a></h5>
+{% endfor %} 
+
+-->
+
+
 
 
 <h4><a href="{{ site.baseurl }}/activities/">View ALL Activities</a></h4>
@@ -72,6 +88,4 @@ topic-tag
 {% if site.owner.foursquare %}<a href="http://foursquare.com/{{ site.owner.foursquare }}" class="author-social" target="_blank"><i class="fa fa-foursquare"></i> Foursquare</a>{% endif %}
 {% if site.owner.steam %}<a href="http://steamcommunity.com/id/{{ site.owner.steam }}" class="author-social" target="_blank"><i class="fa fa-steam-square"></i> Steam</a>{% endif %}
 
-<br><br><br>
-<h3>Blog.Roll</h3>
-<a href="http://www.r-bloggers.com" target="_blank">R Bloggers</a>
+

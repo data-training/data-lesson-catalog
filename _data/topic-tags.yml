@@ -1,12 +1,18 @@
-- slug: data-analysis
-  name: Analysis
+- slug: collaboration-synthesis
+  name: Collaboration and Synthesis
 
-- slug: data-visualization
-  name: Vizualization  
+- slug: communication-dissemination
+  name: Communication and Dissemination
   
-- slug: data-management-processing
+- slug: analysis
+  name: Data Analysis
+
+- slug: visualization
+  name: Data Visualization  
+  
+- slug: management-processing
   name: Management and Processing
-  
 
-  
+- slug: software-skills
+  name: Software Skills for Science
   

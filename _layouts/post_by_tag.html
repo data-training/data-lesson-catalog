@@ -32,6 +32,13 @@
 {{ content }}
 </div>
 
+List of Posts?
+{% for post in site.posts %}
+
+	{{ post.title }}
+
+{% endfor %}
+
     {% if site.tags[page.tag] %}
         {% for post in site.tags[page.tag] %}
             {% capture post_year %}{{ post.date | date: '%Y' }}{% endcapture %}

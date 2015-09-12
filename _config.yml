@@ -38,6 +38,7 @@ category: [using lidar data, working with field data, zcarbon links]
 categories: [using lidar data, working with field data, zcarbon links]
 # Links to include in top navigation
 # For external links add external: true
+
 links:  
   - title: Data Tutorials
     url: /activities/
@@ -45,12 +46,12 @@ links:
   - title: About
     url: /about/
 
-  - title: Data Workshops
-    url: /Data-Workshops/
+  - title: Courses
+    url: /course/
     
   - title: Data Lessons
     url: /data-lessons/
-    
+
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone:    America/Denver

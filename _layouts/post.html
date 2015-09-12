@@ -41,10 +41,14 @@
 <!-- Begin Page Content  -->
     
     
-      <h4>Authors: {{ page.authors }}</h4>
+      <h4>{{ page.authors }}</h4>
+      <h4>Organization: {{ page.organization }}</h4>
+      <p>{{ page.description }}</p>
+      
+      <a href="{{ page.source-url }}" class="btn btn-success">Visit {{ page.organization }} Resource Now</a>      
       
       <p>Entry Type: {{ page.catalog-entry-type }}</p>
-      <p>Organization: {{ page.organization }}</p>
+      
       <p>Identifier: {{ page.identifier }}</p>
       <p>License Name: {{ page.license-name }}</p>
       <p>Target Audience: {{ page.target-audience }}</p>
@@ -61,15 +65,13 @@
       <p>software language tag: {{ page.software-language-tag }}</p>
       <p>discrete Skills Tag: {{ page.discrete-skills-tag }}</p>
       <p>Time: {{ page.time }}</p>
-      <p>Related Libraries: {{ page.related-libraries }}</p>
-      <p>source- url: {{ page.source-url }}</p>
-      
+      <p>Related Libraries: {{ page.related-libraries }}</p>      
       <p>Event Coordinates: {{ page.event-coordinates }}</p>
       <p>Page Location: {{ page.location }}</p>
       <p>Pre Req : {{ page.pre-req }}</p>
      
      
-      <p>Description: {{ page.description }}</p>
+      
       
       
       {{ content }}

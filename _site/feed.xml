@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2015-09-11T10:23:59-06:00</updated>
+<updated>2015-09-12T10:32:14-06:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Data Lesson Catalog</name>
@@ -14,8 +14,8 @@
 
 
 <entry>
-  <title type="html"><![CDATA[Nceas Oss]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/nceas-oss/" />
+  <title type="html"><![CDATA[Open Science for Synthesis (OSS)]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/NCEAS-OSS/" />
   <id>http://localhost:4000/nceas-oss</id>
   <published>2015-09-10T00:00:00-06:00</published>
   <updated>2015-09-10T00:00:00-06:00</updated>
@@ -24,9 +24,13 @@
     <uri>http://localhost:4000</uri>
     <email>datalessons@gmail.com</email>
   </author>
-  <content type="html">
+  <content type="html">&lt;p&gt;The URL image element is causing issues with building so i’m removing it temporarily.
+image: https://www.nceas.ucsb.edu/files/images/NCEAS-Stacked-4C-120w.png
+  feature:
+  teaser:&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/nceas-oss/&quot;&gt;Nceas Oss&lt;/a&gt; was originally published by Data Lesson Catalog at &lt;a href=&quot;http://localhost:4000&quot;&gt;Data Lesson Catalog&lt;/a&gt; on September 10, 2015.&lt;/p&gt;</content>
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/NCEAS-OSS/&quot;&gt;Open Science for Synthesis (OSS)&lt;/a&gt; was originally published by Data Lesson Catalog at &lt;a href=&quot;http://localhost:4000&quot;&gt;Data Lesson Catalog&lt;/a&gt; on September 10, 2015.&lt;/p&gt;</content>
 </entry>
 
 
@@ -48,36 +52,22 @@
 
 
 <entry>
-  <title type="html"><![CDATA[Test Submitted Lesson 3]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/cheatsheets/lesson-one" />
-  <id>http://localhost:4000/cheatsheets/lesson3</id>
-  <published>2015-04-15T14:49:52-06:00</published>
-  <updated>2015-04-15T14:49:52-06:00</updated>
+  <title type="html"><![CDATA[NEON #WorkWithData Summer Institute]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/NEON-WWD/" />
+  <id>http://localhost:4000/NEON-summerInstitute</id>
+  <published>2015-09-10T00:00:00-06:00</published>
+  <updated>2015-09-10T00:00:00-06:00</updated>
   <author>
     <name>Data Lesson Catalog</name>
     <uri>http://localhost:4000</uri>
     <email>datalessons@gmail.com</email>
   </author>
-  <content type="html">&lt;p&gt;Long description about the content will go here.&lt;/p&gt;
+  <content type="html">&lt;p&gt;The URL image element is causing issues with building so i’m removing it temporarily.
+image: https://www.nceas.ucsb.edu/files/images/NCEAS-Stacked-4C-120w.png
+  feature:
+  teaser:&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/cheatsheets/lesson-one&quot;&gt;Test Submitted Lesson 3&lt;/a&gt; was originally published by Data Lesson Catalog at &lt;a href=&quot;http://localhost:4000&quot;&gt;Data Lesson Catalog&lt;/a&gt; on April 15, 2015.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Test Submitted Lesson One]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/cheatsheets/lesson-one" />
-  <id>http://localhost:4000/cheatsheets/lesson1</id>
-  <published>2015-04-15T14:49:52-06:00</published>
-  <updated>2015-04-15T14:49:52-06:00</updated>
-  <author>
-    <name>Data Lesson Catalog</name>
-    <uri>http://localhost:4000</uri>
-    <email>datalessons@gmail.com</email>
-  </author>
-  <content type="html">
-
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/cheatsheets/lesson-one&quot;&gt;Test Submitted Lesson One&lt;/a&gt; was originally published by Data Lesson Catalog at &lt;a href=&quot;http://localhost:4000&quot;&gt;Data Lesson Catalog&lt;/a&gt; on April 15, 2015.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/NEON-WWD/&quot;&gt;NEON #WorkWithData Summer Institute&lt;/a&gt; was originally published by Data Lesson Catalog at &lt;a href=&quot;http://localhost:4000&quot;&gt;Data Lesson Catalog&lt;/a&gt; on September 10, 2015.&lt;/p&gt;</content>
 </entry>
 
 
@@ -85,8 +75,8 @@
   <title type="html"><![CDATA[Lesson 01: Why Data Management]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/DataManagement/Why-Data-Management" />
   <id>http://localhost:4000/DataManagement/DataOne2</id>
-  <published>2015-03-20T14:49:52-06:00</published>
-  <updated>2015-03-20T14:49:52-06:00</updated>
+  <published>2015-09-10T00:00:00-06:00</published>
+  <updated>2015-09-10T00:00:00-06:00</updated>
   <author>
     <name>Data Lesson Catalog</name>
     <uri>http://localhost:4000</uri>
@@ -94,133 +84,7 @@
   </author>
   <content type="html">
 
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/DataManagement/Why-Data-Management&quot;&gt;Lesson 01: Why Data Management&lt;/a&gt; was originally published by Data Lesson Catalog at &lt;a href=&quot;http://localhost:4000&quot;&gt;Data Lesson Catalog&lt;/a&gt; on March 20, 2015.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[A example workshop]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/Data-Workshops/NEON-HDF5-HyperspectralImagery-In-R" />
-  <id>http://localhost:4000/Data-Workshops/A-Workshop</id>
-  <published>2015-01-15T13:49:52-07:00</published>
-  <updated>2015-01-15T13:49:52-07:00</updated>
-  <author>
-    <name>Data Lesson Catalog</name>
-    <uri>http://localhost:4000</uri>
-    <email>datalessons@gmail.com</email>
-  </author>
-  <content type="html">&lt;h3 id=&quot;a-neon-data-carpentry-workshop&quot;&gt;A NEON Data Carpentry Workshop&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;Date:&lt;/strong&gt; Spring 2015&lt;/p&gt;
-
-&lt;p&gt;This workshop will providing hands on experience with working with hyperspectral imagery in hierarchical data formats(HDF5), in R. It will also cover raster data analysis in R.&lt;/p&gt;
-
-&lt;div id=&quot;objectives&quot;&gt;
-
-&lt;h3&gt;Goals / Objectives&lt;/h3&gt;
-After completing this workshop, you will:
-&lt;ol&gt;
-&lt;li&gt;Know what the hyperspectral remote sensing data are&lt;/li&gt;
-&lt;li&gt;Know How to create and read from HDF5 files containing spatial data in R.&lt;/li&gt;
-&lt;li&gt;Know they key attributes of raster data that you need to spatially locate raster data in R.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3&gt;Before the Workshop Please&lt;/h3&gt;
-&lt;p&gt;Download All Data Here&lt;/p&gt;
-
-&lt;a href=&quot;##&quot; class=&quot;btn btn-success&quot;&gt; Eventual Download Data Link&lt;/a&gt;
-
-&lt;p&gt;Install Packages using this script. Package list includes:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;GDAL&lt;/li&gt;
-&lt;li&gt;RHDF5 &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;please-also-watch-this-video-prior-to-the-workshop&quot;&gt;Please also watch this video prior to the workshop&lt;/h2&gt;
-
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/3iaFzafWJQE?rel=0&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-
-&lt;h2 id=&quot;schedule&quot;&gt;SCHEDULE&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Time&lt;/th&gt;
-      &lt;th&gt;Topic&lt;/th&gt;
-      &lt;th&gt;Instructor&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2:00&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;/GIS-Spatial-Data/Working-With-Rasters/&quot;&gt;Working with Rasters - general overview&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2:30&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;/R/Raster-Data-In-R/&quot; title=&quot;What is HDF5&quot;&gt;Raster Data in R - the skinny&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;3:00&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;/HDF5/About-Hyperspectral-Remote-Sensing-Data/&quot; title=&quot;What is HDF5&quot;&gt;about Hyperspectral Remote Sensing Data&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;4:00&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;HDF5/Imaging-Spectroscopy-HDF5-In-R/&quot; title=&quot;What is HDF5&quot;&gt;Working with Hyperspectral Remote Sensing Data in R - P1&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;??&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;4:00&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;/HDF5/Create-Raster-Stack-Spectroscopy-HDF5-In-R/&quot; title=&quot;What is HDF5&quot;&gt;Raster Stacks in R - Working with Hyperspectral Remote Sensing Data&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
-
-&lt;p&gt;To participate in the workshop, you will need working copies of the software described below. Please make sure to install everything (or at least to download the installers) before the start of the workshop.&lt;/p&gt;
-
-&lt;h1 id=&quot;hdfview&quot;&gt;HDFView&lt;/h1&gt;
-
-&lt;p&gt;Hierarchical Data Format 5 (HDF5) is a file format used to store, package, and simultaneously organize large quantities of related data. Although we will use R to analyze data stored in this format, HDFView is free-ware that allows for quick and easy viewing and editing of these files.&lt;/p&gt;
-
-&lt;h1 id=&quot;r&quot;&gt;R&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://cran.r-project.org/&quot;&gt;R&lt;/a&gt; is a programming language that specializes in statistical computing. It is a powerful tool for exploratory data analysis. To interact with R, we recommend, but do not require, &lt;a href=&quot;http://www.rstudio.com/&quot;&gt;RStudio&lt;/a&gt;, an interactive development environment (IDE).&lt;/p&gt;
-
-&lt;h2 id=&quot;r-packages-to-install&quot;&gt;R Packages to Install&lt;/h2&gt;
-&lt;p&gt;We will use several packages, including&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.bioconductor.org/packages/release/bioc/vignettes/rhdf5/inst/doc/rhdf5.pdf&quot;&gt;rhdf5&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://cran.r-project.org/web/packages/rgdal/rgdal.pdf&quot;&gt;gdal&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;others??&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;DOWNLOAD&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;The package installation script &lt;a href=&quot;https://github.com/NEONdps/neonESA2014/blob/master/packageInstallation.R&quot;&gt;here&lt;/a&gt;,&lt;/li&gt;
-  &lt;li&gt;The &lt;a href=&quot;http://trac.osgeo.org/gdal/wiki/DownloadingGdalBinaries&quot;&gt;gdal&lt;/a&gt; libraries, and&lt;/li&gt;
-  &lt;li&gt;The &lt;a href=&quot;http://www.hdfgroup.org/HDF5/release/obtain5.html&quot;&gt;hdf5&lt;/a&gt; libraries.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h1 id=&quot;optional-resources&quot;&gt;Optional resources&lt;/h1&gt;
-
-&lt;h2 id=&quot;qgis&quot;&gt;QGIS&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://www.qgis.org/en/site/forusers/index.html#download&quot; target=&quot;_blank&quot;&gt;QGIS&lt;/a&gt; is a cross-platform Open Source Geographic Information system.&lt;/p&gt;
-
-&lt;h2 id=&quot;online-lidar-data-viewer-las-viewer&quot;&gt;Online LiDAR Data Viewer (las viewer)&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://plas.io&quot;&gt;http://plas.io&lt;/a&gt; is a Open Source LiDAR data viewer developed by Martin Isenberg of Las Tools and several of his colleagues.&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/Data-Workshops/NEON-HDF5-HyperspectralImagery-In-R&quot;&gt;A example workshop&lt;/a&gt; was originally published by Data Lesson Catalog at &lt;a href=&quot;http://localhost:4000&quot;&gt;Data Lesson Catalog&lt;/a&gt; on January 15, 2015.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/DataManagement/Why-Data-Management&quot;&gt;Lesson 01: Why Data Management&lt;/a&gt; was originally published by Data Lesson Catalog at &lt;a href=&quot;http://localhost:4000&quot;&gt;Data Lesson Catalog&lt;/a&gt; on September 10, 2015.&lt;/p&gt;</content>
 </entry>
 
 </feed>

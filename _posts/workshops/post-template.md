@@ -1,60 +1,7 @@
-###Naming Conventions
+### Example YAML classification of a catalog entry
 
-Date-OrgNameAbbreviation-Topic
-
-###Working with YAML
-
-An example `YAML` header is below. Please note that the YAML starts and ends with `---`.
-Comments are not supported.
-
-	---
-	layout: post
-	catalog-entry-type: lesson               
-	title: Lesson 01: Why Data Management
-	description: Trends in data collection, storage and loss, the importance and benefits of data management, and an introduction to the data life cycle.
-	authors: "Heather Henkel, Viv Hutchison, Carly Strasser, Stacy Rebich Hespanha, Kristin Vanderbilt, Lynda Wayne, Stephanie Hampton"  <<- open text unless we can automate this to create the YML files
-	organization: [ DataONE, USGS ] 
-	identifier: doi:xx.xxxx/example.doi
-	license-name:                  
-	target-audience:
-	delivery-mode: 
-	date-published: 2015
-	citation: DataONE Education Module: Data Entry and Manipulation. DataONE. Retrieved Nov12, 2012. From https://www.dataone.org/sites/all/documents/L01_DataManagement.pptx
-	topic-tag: ["Data Management and Processing", "Collaboration, Communication, and Dissemination"]              ---> from controlled vocab on topic taxonomy
-	learning-type-tag: [Video, MOOC, In-Person, Podcast, Flipped Classroom, Powerpoint Slides, Powerpoint Slides with Video, Materials-based Exercise, blogpost]
-	assessment-tag: 
-	content-tag: 
-	incentive-tag:  
-	format-tag: 
-	discrete-skills-tag:   
-	software-language-tag: 
-	time: 
-	related-libraries: 
-	source-url: https://www.dataone.org/education-modules
-	image:  
-	  feature: 
-	  teaser: 
-	permalink: 
-	comments: TRUE  
-	event-coordinates: 
-	event-location: 
-	pre-req:
-	---
-
----
-###Layout 
-This is the 
 layout: post
-
-###catalog-entry-type: 
-From controlled vocab: 
-* lesson, 
-* data, 
-* unit, 
-* workshop, 
-* course, 
-* program, 
-* event
+catalog-entry-type: lesson               ---> from controlled vocab: lesson, data, unit, workshop, course, program, event
 title: Lesson 01: Why Data Management
 description: Trends in data collection, storage and loss, the importance and benefits of data management, and an introduction to the data life cycle.
 authors: "Heather Henkel, Viv Hutchison, Carly Strasser, Stacy Rebich Hespanha, Kristin Vanderbilt, Lynda Wayne, Stephanie Hampton"  <<- open text unless we can automate this to create the YML files
@@ -84,7 +31,3 @@ comments: TRUE  ----> If this is set to TRUE, discus commenting is turned on - p
 event-coordinates:                 <---------- this would be geocoordinates of specific events
 event-location:                       <---------- this would be a place name of specific events (e.g., Santa Barbara, California)   do we want
 pre-req:
----
-
-###STUFF TO DELETE
-Please delete the "<---- " sections of the template above - its' just there to help you understand what to write"

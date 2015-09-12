@@ -10,23 +10,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/data-management-processing/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/Data-Workshops/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/HDF5/</loc>
-    </url>
-    
-    <url>
         <loc>http://localhost:4000/Rfeed.xml</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/Workshop-Trials/</loc>
     </url>
     
     <url>
@@ -34,31 +18,31 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/data-analysis/</loc>
+        <loc>http://localhost:4000/topic-tag/data-analysis/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/topic-tag/data-analysis/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/topic-tag/collaboration-synthesis/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/topic-tag/communication-dissemination/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/course/</loc>
     </url>
     
     <url>
         <loc>http://localhost:4000/data-analysis/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/data-lessons/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/data-visualization/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/data-viz/</loc>
     </url>
     
     <url>
         <loc>http://localhost:4000/feed.xml</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/hyperspectral-remote-sensing/</loc>
     </url>
     
     <url>
@@ -70,11 +54,11 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/lidar/</loc>
+        <loc>http://localhost:4000/lesson/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/post-template.html</loc>
+        <loc>http://localhost:4000/topic-tag/management-processing/</loc>
     </url>
     
     <url>
@@ -86,19 +70,11 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/remote-sensing/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/remote-sensing/</loc>
-    </url>
-    
-    <url>
         <loc>http://localhost:4000/sitemap.xml</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/GIS-Spatial-Data/</loc>
+        <loc>http://localhost:4000/topic-tag/software-skills/</loc>
     </url>
     
     <url>
@@ -109,10 +85,14 @@
         <loc>http://localhost:4000/theme-setup/</loc>
     </url>
     
+    <url>
+        <loc>http://localhost:4000/topic-tag/data-visualization/</loc>
+    </url>
+    
 
     
     <url>
-        <loc>http://localhost:4000/nceas-oss/</loc>
+        <loc>http://localhost:4000/NCEAS-OSS/</loc>
     </url>
     
     <url>
@@ -120,19 +100,11 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/cheatsheets/lesson-one</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/cheatsheets/lesson-one</loc>
+        <loc>http://localhost:4000/NEON-WWD/</loc>
     </url>
     
     <url>
         <loc>http://localhost:4000/DataManagement/Why-Data-Management</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/Data-Workshops/NEON-HDF5-HyperspectralImagery-In-R</loc>
     </url>
     
 </urlset>

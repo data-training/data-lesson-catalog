@@ -28,12 +28,12 @@ related-libraries:
 source-url: https://www.neondataskills.org/
 permalink: /NEON-WWD/
 comments: TRUE
-event-coordinates: [34.4258, -119.7142]
+event-coordinates: [40.0274, -105.2519]
 event-location: Boulder, CO
 pre-req: ["Basic statistics", "Science background"]
+image: 
+  feature: https://www.nceas.ucsb.edu/files/images/NCEAS-Stacked-4C-120w.png
+  teaser:
 ---
 
 The URL image element is causing issues with building so i'm removing it temporarily.
-image: https://www.nceas.ucsb.edu/files/images/NCEAS-Stacked-4C-120w.png
-  feature:
-  teaser:

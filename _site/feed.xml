@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2015-09-12T12:41:36-06:00</updated>
+<updated>2015-09-12T13:55:47-06:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Data Lesson Catalog</name>
@@ -62,10 +62,7 @@ image: https://www.nceas.ucsb.edu/files/images/NCEAS-Stacked-4C-120w.png
     <uri>http://localhost:4000</uri>
     <email>datalessons@gmail.com</email>
   </author>
-  <content type="html">&lt;p&gt;The URL image element is causing issues with building so i’m removing it temporarily.
-image: https://www.nceas.ucsb.edu/files/images/NCEAS-Stacked-4C-120w.png
-  feature:
-  teaser:&lt;/p&gt;
+  <content type="html">&lt;p&gt;The URL image element is causing issues with building so i’m removing it temporarily.&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;http://localhost:4000/NEON-WWD/&quot;&gt;NEON #WorkWithData Summer Institute&lt;/a&gt; was originally published by Data Lesson Catalog at &lt;a href=&quot;http://localhost:4000&quot;&gt;Data Lesson Catalog&lt;/a&gt; on September 10, 2015.&lt;/p&gt;</content>
 </entry>

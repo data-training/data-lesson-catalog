@@ -10,12 +10,10 @@
 <meta name="keywords" content="data-management-processing">
 <!-- Twitter Cards -->
 	
-		<meta name="twitter:card" content="summary">
+		<meta name="twitter:card" content="summary_large_image">
 		<meta name="twitter:image" content=
 			
-				
-						"http://localhost:4000/images/"
-				
+				"https://www.nceas.ucsb.edu/files/images/NCEAS-Stacked-4C-120w.png"
 			
 		>
 	
@@ -79,6 +77,14 @@
 <link rel="stylesheet" href="/assets/highlightjs/styles/zenburn.css">
 <script src="/assets/highlightjs/highlight.packR.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
+
+
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>      
+   
+<style>
+    #map{ width: 700px; height: 300px; }
+</style>
 </head>
 
 <body class="post">
@@ -108,6 +114,15 @@
 	</div><!-- /.top-navigation -->
 </div><!-- /.navigation-wrapper -->
 
+
+  <div class="image-wrap">
+  <img src=
+    
+      "https://www.nceas.ucsb.edu/files/images/NCEAS-Stacked-4C-120w.png"
+    
+  alt="NEON #WorkWithData Summer Institute feature image">
+  
+  </div><!-- /.image-wrap -->
 
 
 
@@ -350,6 +365,31 @@ becuase the site is built on the backend so it should not affect the front-end u
     
 <!-- Begin Page Content  -->
     
+<!-- If coordinates are provided render a map on the page -->
+
+
+
+<div id="map"></div>
+
+<script>  
+  //var map = L.map('map').setView([40.0274, -105.2519], 13);
+  var map = L.map('map').setView([40.0274-105.2519], 13);
+  
+  //add marker for event location
+  //var marker = L.marker([40.0274, -105.2519]).addTo(map);
+  var marker = L.marker([40.0274-105.2519]).addTo(map);
+  
+  marker.bindPopup("<b>NEON #WorkWithData Summer Institute</b><br>Boulder, CO").openPopup();
+  
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 18,
+    id: 'lwasser.ciehgoxzo00azsrm37yajmw24',
+    accessToken: 'pk.eyJ1IjoibHdhc3NlciIsImEiOiJjaWVoZ295bWQwMGN2c2trZ2k4emphbjVyIn0.kh9tT2wNwvt-d83-8KLhng'
+}).addTo(map);
+</script>
+
+    
     
       <h4>Leah WasserWendy Gram</h4>
       <h4>Organization: NEON</h4>
@@ -376,7 +416,7 @@ becuase the site is built on the backend so it should not affect the front-end u
       <p>discrete Skills Tag: scriptingdata managementdata integrationdata mungingquality analysisworkflowssoftware testingsoftware designcommunicationcollaborationmeta-analysis</p>
       <p>Time: 2 weeks</p>
       <p>Related Libraries: </p>      
-      <p>Event Coordinates: 34.4258-119.7142</p>
+      <p>Event Coordinates: 40.0274-105.2519</p>
       <p>Page Location: </p>
       <p>Pre Req : Basic statisticsScience background</p>
      
@@ -384,10 +424,7 @@ becuase the site is built on the backend so it should not affect the front-end u
       
       
       
-      <p>The URL image element is causing issues with building so i’m removing it temporarily.
-image: https://www.nceas.ucsb.edu/files/images/NCEAS-Stacked-4C-120w.png
-  feature:
-  teaser:</p>
+      <p>The URL image element is causing issues with building so i’m removing it temporarily.</p>
 
 
 <!-- End Page Content  -->

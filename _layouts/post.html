@@ -9,6 +9,14 @@
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/highlightjs/styles/zenburn.css">
 <script src="{{ site.baseurl }}/assets/highlightjs/highlight.packR.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
+
+
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>      
+   
+<style>
+    #map{ width: 700px; height: 300px; }
+</style>
 </head>
 
 <body class="post">
@@ -40,6 +48,31 @@
     
 <!-- Begin Page Content  -->
     
+<!-- If coordinates are provided render a map on the page -->
+
+{% if page.event-coordinates %}
+
+<div id="map"></div>
+
+<script>  
+  //var map = L.map('map').setView([40.0274, -105.2519], 13);
+  var map = L.map('map').setView([{{ page.event-coordinates }}], 13);
+  
+  //add marker for event location
+  //var marker = L.marker([40.0274, -105.2519]).addTo(map);
+  var marker = L.marker([{{ page.event-coordinates }}]).addTo(map);
+  
+  marker.bindPopup("<b>{{ page.title }}</b><br>{% if page.event-location %}{{ page.event-location }}{% endif %}").openPopup();
+  
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 18,
+    id: 'lwasser.ciehgoxzo00azsrm37yajmw24',
+    accessToken: 'pk.eyJ1IjoibHdhc3NlciIsImEiOiJjaWVoZ295bWQwMGN2c2trZ2k4emphbjVyIn0.kh9tT2wNwvt-d83-8KLhng'
+}).addTo(map);
+</script>
+
+{% endif %}    
     
       <h4>{{ page.authors }}</h4>
       <h4>Organization: {{ page.organization }}</h4>

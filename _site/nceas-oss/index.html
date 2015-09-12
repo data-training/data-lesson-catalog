@@ -79,6 +79,14 @@
 <link rel="stylesheet" href="/assets/highlightjs/styles/zenburn.css">
 <script src="/assets/highlightjs/highlight.packR.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
+
+
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>      
+   
+<style>
+    #map{ width: 700px; height: 300px; }
+</style>
 </head>
 
 <body class="post">
@@ -350,6 +358,31 @@ becuase the site is built on the backend so it should not affect the front-end u
     
 <!-- Begin Page Content  -->
     
+<!-- If coordinates are provided render a map on the page -->
+
+
+
+<div id="map"></div>
+
+<script>  
+  //var map = L.map('map').setView([40.0274, -105.2519], 13);
+  var map = L.map('map').setView([34.4258, -119.7142], 13);
+  
+  //add marker for event location
+  //var marker = L.marker([40.0274, -105.2519]).addTo(map);
+  var marker = L.marker([34.4258, -119.7142]).addTo(map);
+  
+  marker.bindPopup("<b>Open Science for Synthesis (OSS)</b><br>Santa Barbara, California").openPopup();
+  
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 18,
+    id: 'lwasser.ciehgoxzo00azsrm37yajmw24',
+    accessToken: 'pk.eyJ1IjoibHdhc3NlciIsImEiOiJjaWVoZ295bWQwMGN2c2trZ2k4emphbjVyIn0.kh9tT2wNwvt-d83-8KLhng'
+}).addTo(map);
+</script>
+
+    
     
       <h4>Matthew JonesMark SchildhauerStephanie HamptonRay IdaszakChris Lenhardt</h4>
       <h4>Organization: NCEASRENCI</h4>
@@ -376,7 +409,7 @@ becuase the site is built on the backend so it should not affect the front-end u
       <p>discrete Skills Tag: scriptingdata managementdata integrationdata mungingquality analysisworkflowssoftware testingsoftware designcommunicationcollaborationmeta-analysis</p>
       <p>Time: 3 weeks</p>
       <p>Related Libraries: </p>      
-      <p>Event Coordinates: 34.4258-119.7142</p>
+      <p>Event Coordinates: 34.4258, -119.7142</p>
       <p>Page Location: </p>
       <p>Pre Req : Basic statisticsScience background</p>
      

@@ -74,37 +74,46 @@
 
 {% endif %}    
     
-      <h4>{{ page.authors }}</h4>
-      <h4>Organization: {{ page.organization }}</h4>
+      
+ <h4>{{ page.authors | join: ', ' }}</h4>
+<h5>Organization: {{ page.organization  | join: ', ' }}</h5>     
+ <p>Event Location: {{ page.event-location }}</p>    
       <p>{{ page.description }}</p>
       
-      <a href="{{ page.source-url }}" class="btn btn-success">Visit {{ page.organization }} Resource Now</a>      
+      <a href="{{ page.source-url }}" class="btn btn-success">Learn more about {{ page.title }} </a>      
       
       <p>Entry Type: {{ page.catalog-entry-type }}</p>
       
-      <p>Identifier: {{ page.identifier }}</p>
-      <p>License Name: {{ page.license-name }}</p>
-      <p>Target Audience: {{ page.target-audience }}</p>
+      {% if page.identifier %}<p>Identifier: {{ page.identifier }}</p>{% endif %}
+      {% if page.license-name %}<p>License Name: {{ page.license-name }}</p>{% endif %}
+      {% if page.target-audience %}<p>Target Audience: {{ page.target-audience }}</p> {% endif %}
+      
       <p>Delivery Mode: {{ page.delivery-mode }}</p>
       <p>Year Published: {{ page.date-published }}</p>
       <p>Citation: {{ page.citation }}</p>
-      <p>Topic Tag: {{ page.topic-tag }}</p>
-      <p>Learning Type Tag: {{ page.learning-type-tag }}</p>
-      <p>assessment-tag: {{ page.assessment-tag }}</p>
-      <p>content-tag: {{ page.content-tag }}</p>
-      <p>incentive-tag: {{ page.citation }}</p>
-      <p>Format Tag: {{ page.format-tag }}</p>
-      <p>discrete Skills Tag: {{ page.discrete-skills-tag }}</p>
-      <p>software language tag: {{ page.software-language-tag }}</p>
-      <p>discrete Skills Tag: {{ page.discrete-skills-tag }}</p>
+      
+      {% if page.learning-type-tag %}<p>Learning Type Tag: {{ page.learning-type-tag }}</p>{% endif %}
+      {% if page.assessment-tag %}<p>assessment-tag: {{ page.assessment-tag }}</p>{% endif %}
+      {% if page.content-tag %}<p>content-tag: {{ page.content-tag }}</p>{% endif %}
+      {% if page.incentive-tag %}<p>incentive-tag: {{ page.incentive-tag }}</p>{% endif %}
+      {% if page.citation %}<p>incentive-tag: {{ page.incentive-tag }}</p>{% endif %}
+      {% if page.format-tag %}<p>Format Tag: {{ page.format-tag }}</p>{% endif %}
+      {% if page.discrete-skills-tag %}<p><strong>Data Skills Covered:</strong> {{ page.discrete-skills-tag | join: ', ' }}</p>{% endif %}
+      <p>software language tag: {{ page.software-language-tag | join: ', '}}</p>
       <p>Time: {{ page.time }}</p>
       <p>Related Libraries: {{ page.related-libraries }}</p>      
-      <p>Event Coordinates: {{ page.event-coordinates }}</p>
-      <p>Page Location: {{ page.location }}</p>
-      <p>Pre Req : {{ page.pre-req }}</p>
-     
-     
       
+      <p>Pre Req : {{ page.pre-req }}</p>
+      
+      <h5>Skillsets Covered:</h5>
+     
+     <ul>      
+     {% for member in page.topic-tag %}
+     
+     <li><a href="{{ site.baseurl }}/topic-tag/{{ member }}">{{ member }}</a></li>
+     
+     {% endfor %}
+      </ul>
       
       
       {{ content }}

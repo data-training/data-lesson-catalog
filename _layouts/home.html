@@ -33,7 +33,7 @@
       <span class="post-date">
                 {% if post.lastModified %}Last modified: {{ post.lastModified | date: "%b %-d, %Y" }}{% endif %}
                 {% if post.estimatedTime %}, Time: {{ post.estimatedTime }}{% endif %}
-                {% if post.packagesLibraries %}, Related: {{ post.packagesLibraries }}{% endif %}
+                {% if post.catalog-entry-type %}, Type: {{ post.catalog-entry-type }}{% endif %}
                 {% if post.event-location %}, Location: {{ post.event-location }}{% endif %}
 	</span>
 	<p>{% if post.level %}, Level: {{ post.level }}{% endif %}

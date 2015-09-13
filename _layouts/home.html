@@ -23,7 +23,7 @@
 
 {{ content }}
 
-  <h3><a href="{{ site.url}}/posts/">Recent Posts</a></h3>
+  <h3><a href="{{ site.url}}/posts/">Recent Additions</a></h3>
   {% for post in site.posts limit:5 %}
   <article>
     {% if post.link %}
@@ -34,6 +34,7 @@
                 {% if post.lastModified %}Last modified: {{ post.lastModified | date: "%b %-d, %Y" }}{% endif %}
                 {% if post.estimatedTime %}, Time: {{ post.estimatedTime }}{% endif %}
                 {% if post.packagesLibraries %}, Related: {{ post.packagesLibraries }}{% endif %}
+                {% if post.event-location %}, Location: {{ post.event-location }}{% endif %}
 	</span>
 	<p>{% if post.level %}, Level: {{ post.level }}{% endif %}
 	{% if post.type %}, Lesson Type: {{ post.type }}{% endif %}</p>

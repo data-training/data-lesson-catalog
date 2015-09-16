@@ -2,7 +2,7 @@
 layout: post_by_topic-tag
 title: 'Articles by Topic Tag: Data Visualization'
 topic-tag: visualization
-permalink: topic-tag/data-visualization/
+permalink: topic-tag/visualization/
 image:
   feature: planeBanner.png
   credit: 

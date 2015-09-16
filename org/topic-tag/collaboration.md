@@ -1,7 +1,7 @@
 ---
 layout: post_by_topic-tag
 title: 'Articles by Topic tag: Collaboration & Synthesis'
-topic-tag: collaboration
+topic-tag: collaboration-synthesis
 permalink: topic-tag/collaboration-synthesis/
 image:
   feature: planeBanner.png

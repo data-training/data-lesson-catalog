@@ -29,7 +29,7 @@ source-url: https://www.neondataskills.org/
 permalink: /NEON-WWD/
 comments: TRUE
 event-coordinates: "40.0274, -105.2519"
-event-location: Boulder, CO
+event-location: "Boulder, CO"
 pre-req: ["Basic statistics", "Science background"]
 image: 
   feature: 

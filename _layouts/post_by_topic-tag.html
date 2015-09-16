@@ -35,6 +35,8 @@
 {% for post in site.posts %}
 	{% if post.topic-tag contains page.topic-tag %}
 	{% assign counter = counter | plus: 1 %}
+	post topic: {{ post.topic-tag }}
+	past-topic: {{ page.topic-tag }}
 		<article>
 			<a href="{{ site.baseurl }}{{ post.url }}" class="list-group-item">
 				<h2 class="list-group-item-heading">{{ post.title }}</h2>

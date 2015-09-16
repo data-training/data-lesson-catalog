@@ -6,7 +6,7 @@ catalog-entry-type: course
 title: "NEON #WorkWithData Summer Institute"
 description: "The NEON Institute is a two-week intensive course that focuses on the use of 
 	NEON data to ask and answer broad-scale ecological questions. Content focusing on using 
-	open science tools and methods, understanding exernal data fundamentals including metadata, 
+	open science tools and methods, understanding external data fundamentals including metadata, 
 	uncertainty,validation, calibration and more."
 authors: ["Leah Wasser", "Wendy Gram"]
 organization: [ NEON ] 
@@ -15,8 +15,7 @@ license-name: CC-BY
 target-audience: "Early-career researchers (postdocs, faculty, grad students)"
 date-published: 2015
 citation: 
-topic-tag: [management-processing, communication-dissemination, collaboration-synthesis,
-	software-skills, analysis, visualization]
+topic-tag: [management-processing, communication-dissemination, collaboration-synthesis,software-skills, analysis, visualization]
 learning-type-tag: [In-Person, Powerpoint Slides, Materials-based Exercise, Lecture]
 content-tag: ["Data Management and Processing", "Collaboration, Communication, and Dissemination", "Software Skills for Science", "Analysis", "Visualization"]
 incentive-tag: Badge

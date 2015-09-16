@@ -1,8 +1,8 @@
 ---
 layout: post_by_topic-tag
 title: 'Articles by Topic tag: Data Analysis'
-topic-tag: data-analysis
-permalink: topic-tag/data-analysis/
+topic-tag: analysis
+permalink: topic-tag/analysis/
 image:
   feature: planeBanner.png
   credit: 

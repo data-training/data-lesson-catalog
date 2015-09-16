@@ -32,7 +32,7 @@ event-coordinates: [40.0274, -105.2519]
 event-location: Boulder, CO
 pre-req: ["Basic statistics", "Science background"]
 image: 
-  feature: https://www.nceas.ucsb.edu/files/images/NCEAS-Stacked-4C-120w.png
+  feature: 
   teaser:
 ---
 

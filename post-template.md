@@ -247,12 +247,12 @@ Please set comments to true. This is how we will allow the community to respond 
 ###event-coordinates
 If you know the coordinate location of the event (in lat, long), please add it here!
 
-	event-coordinates:   latitude, longitude
+	event-coordinates:   "latitude, longitude"
 
 ###event-location
 Please add the city, state or city, country location here.
 
-	event-location:  Santa Barbara, California
+	event-location:  "Santa Barbara, California"
 	
 #pre-req
 i am not sure how we are handling this and what we expect users to input here.

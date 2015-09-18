@@ -9,4 +9,4 @@ image:
   creditlink: 
 ---
 
-This will list all pages with a collaboration & synthesis theme yes.
+This will list all pages with a collaboration & synthesis theme.

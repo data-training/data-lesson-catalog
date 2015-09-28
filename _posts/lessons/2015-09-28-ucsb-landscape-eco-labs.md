@@ -28,7 +28,7 @@ source-url: http://bbest.github.io/landscape-ecology-labs/
 image:  
   feature: 
   teaser:     
-permalink: /test
+permalink: /landscape-ecology-labs
 comments: TRUE  
 event-coordinates: "34.413182, -119.841915"
 event-location: "Santa Barbara, California"

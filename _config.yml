@@ -1,57 +1,49 @@
 title:  Data Lesson Catalog
 description: A test development site that will host a catalog of data lessons submitted by the community.
-#Comment out url when working locally to resolve base urls correctly ok
-#use this when pushing to git for live version
 
+#use this when pushing to git for live version
 url:       http://data-training.github.io/data-lesson-catalog
 baseurl:	http://data-training.github.io/data-lesson-catalog
 
-#use this when working locally
-#just uncomment the first localhost.
+# use this when working locally
 #url: http://localhost:4000
-#baseurl: http://localhost:4000
 
 disqus_shortname: datalessoncatalog
 
 # Social networking links are used in author-bio sidebar. Update and remove as you like.
 
 # Owner/author information
-owner: 		
+owner:
   name: Data Lesson Catalog
   avatar: profilePic_circle.png
   bio: "A central repository for education content related to working with data."
   email: "datalessons@gmail.com"
-  twitter: "leahawasser"
-  github: "lwasser"
-  youtube: 
+  twitter: ""
+  github: "data-training"
+  youtube:
 # instagram:      ""
 # For Google Authorship https://plus.google.com/authorship
 # google_plus:    ""
 
 # Analytics and webmaster tools stuff goes here
-google_analytics:   
-#google_verify:      UQj93ERU9zgECodaaXgVpkjrFn9UrDMEzVamacSoQ8Y
-# https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
-#bing_verify:        D81F4C18A6CB3018F64D7C827D953DFD
+google_analytics:
 
-category: [using lidar data, working with field data, zcarbon links]
-categories: [using lidar data, working with field data, zcarbon links]
 # Links to include in top navigation
 # For external links add external: true
 
-links:  
+links:
   - title: Data Tutorials
     url: /activities/
-  
+
   - title: About
     url: /about/
 
   - title: Courses
     url: /course/
-    
+
   - title: Data Lessons
     url: /data-lessons/
-    
+
   - title: Submit A Lesson, Course or Workshop
     url: /submit/
 
@@ -62,10 +54,6 @@ future:      true
 #pygments:    true
 #highlighter: pygments
 markdown:    kramdown
-#markdown: redcarpet
-redcarpet:
-  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
-
 
 # https://github.com/mojombo/jekyll/wiki/Permalinks
 permalink:   /:categories/:title/
@@ -75,10 +63,10 @@ kramdown:
   footnote_nr: 1
   entity_output: as_char
   toc_levels: 1..2
-  use_coderay: false
+  enable_coderay: false
 
   coderay:
-    coderay_line_numbers: 
+    coderay_line_numbers:
     coderay_line_numbers_start: 1
     coderay_tab_width: 4
     coderay_bold_every: 10

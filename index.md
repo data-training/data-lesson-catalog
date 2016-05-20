@@ -1,11 +1,12 @@
 ---
 layout: home
-description: "A site devoted to open science and open data. Maintained by Leah Wasser"
+description: "A site devoted to open science and open data."
 Tags: []
 image:
-  feature: texture-feature-07.png
-  credit: NEON
-  creditlink: http://www.neoninc.org
+  feature:
+  credit:
+  creditlink:
 ---
 
+## Welcome
 Some text about the data lesson catalog goals, etc etc.  

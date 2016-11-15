@@ -20,8 +20,8 @@ Comments are not supported.
 	---
 	layout: post
 	catalog-entry-type: lesson               
-	title: Lesson 01: Why Data Management
-	description: Trends in data collection, storage and loss, the importance and benefits of data management, and an introduction to the data life cycle.
+	title: 'Lesson 01: Why Data Management'
+	description: 'Trends in data collection, storage and loss, the importance and benefits of data management, and an introduction to the data life cycle.'
 	authors: "Heather Henkel, Viv Hutchison, Carly Strasser, Stacy Rebich Hespanha, Kristin Vanderbilt, Lynda Wayne, Stephanie Hampton"  <<- open text unless we can automate this to create the YML files
 	organization: [ DataONE, USGS ] 
 	identifier: doi:xx.xxxx/example.doi
